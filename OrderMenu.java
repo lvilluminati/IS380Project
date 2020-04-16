@@ -30,19 +30,51 @@ public class OrderMenu extends JFrame {
 
     private void addbuttonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
-
+        addbutton.setForeground(Color.white);
+        addbutton.setBackground(Color.red );
+        subButton.setForeground(null);
+        subButton.setBackground(null);
+        compButton.setForeground(null);
+        compButton.setBackground(null);
+        noteButton.setForeground(null);
+        noteButton.setBackground(null);
     }
 
     private void subButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
+        addbutton.setForeground(null);
+        addbutton.setBackground(null);
+        subButton.setForeground(Color.white);
+        subButton.setBackground(Color.red);
+        compButton.setForeground(null);
+        compButton.setBackground(null);
+        noteButton.setForeground(null);
+        noteButton.setBackground(null);
     }
 
     private void compButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
+        addbutton.setForeground(null);
+        addbutton.setBackground(null);
+        subButton.setForeground(null);
+        subButton.setBackground(null);
+        compButton.setForeground(Color.white);
+        compButton.setBackground(Color.red);
+        noteButton.setForeground(null);
+        noteButton.setBackground(null);
+
     }
 
     private void noteButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
+        addbutton.setForeground(null);
+        addbutton.setBackground(null);
+        subButton.setForeground(null);
+        subButton.setBackground(null);
+        compButton.setForeground(null);
+        compButton.setBackground(null);
+        noteButton.setForeground(Color.white);
+        noteButton.setBackground(Color.red);
     }
 
     private void subTotalButtonActionPerformed(ActionEvent e) {
