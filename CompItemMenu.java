@@ -2,14 +2,15 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-/*
- * Created by JFormDesigner on Sun Apr 19 19:50:02 PDT 2020
- */
-
-
 
 /**
- * @author Jason Jasper
+ * IS 380 Final Project - Restaurant Point of Sale program.
+ * @author Jason Jasper, David Martin-Vaquero, Jared Mclaren, Regine Villongco, Chemen Wong
+ * @version 0.1.0
+ *
+ * This is the CompItemMenu class. This is the GUI component to list order items. A JList holds the current
+ * items in the order, the user selects items to comp (items that are free but not deleted off the order).
+ *
  */
 public class CompItemMenu extends JFrame {
     private int tableNumber;

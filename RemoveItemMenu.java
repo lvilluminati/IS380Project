@@ -2,14 +2,16 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-/*
- * Created by JFormDesigner on Sun Apr 19 17:48:24 PDT 2020
- */
-
-
 
 /**
- * @author Jason Jasper
+ * IS 380 Final Project - Restaurant Point of Sale program.
+ * @author Jason Jasper, David Martin-Vaquero, Jared Mclaren, Regine Villongco, Chemen Wong
+ * @version 0.1.0
+ *
+ * This is the RemoveItem GUI component. This will allow the user to select items from a list supplied by Order
+ * which will be deleted from the order once the OK button is pressed.
+ *
+ * NOT YET IMPLEMENTED
  */
 public class RemoveItemMenu extends JFrame {
     private int tableNumber;

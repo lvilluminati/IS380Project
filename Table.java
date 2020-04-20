@@ -7,11 +7,6 @@
  * checking to see if a table is available and instantiating new instances of Order.
  */
 public class Table {
-    /*
-    THIS CLASS WILL STORE TABLE DATA.
-    THE HIERARCHY SHOULD BE TABLE HAS AN ORDER HAS ITEMS.
-    RIGHT NOW THERE ARE NINE TABLES WHICH IS HARD CODED.
-     */
 
     private int tableNumber;
     private boolean hasOrder;

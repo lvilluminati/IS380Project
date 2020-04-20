@@ -1,14 +1,16 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-/*
- * Created by JFormDesigner on Thu Apr 09 17:36:19 PDT 2020
- */
-
-
-
 /**
- * @author Jason Jasper
+ * IS 380 Final Project - Restaurant Point of Sale program.
+ * @author Jason Jasper, David Martin-Vaquero, Jared Mclaren, Regine Villongco, Chemen Wong
+ * @version 0.1.0
+ *
+ * This is the Main Menu GUI component. There are only 3 options, the Order screen, the Reports screen, and Exit.
+ * Order opens up the main portion of this app where the user can Add, Subtract, Comp, and add Notes to orders.
+ * Reports opens up a Report window (not yet implemented)
+ * Exit closes the entire App.
+ *
  */
 public class MainMenu extends JFrame {
     public JFrame orderWindow;

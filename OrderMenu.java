@@ -1,14 +1,24 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-/*
- * Created by JFormDesigner on Thu Apr 09 17:56:44 PDT 2020
- */
-
-
 
 /**
- * @author Jason Jasper
+ * IS 380 Final Project - Restaurant Point of Sale program.
+ * @author Jason Jasper, David Martin-Vaquero, Jared Mclaren, Regine Villongco, Chemen Wong
+ * @version 0.1.0
+ *
+ * This is the Order Window GUI component. This class controls all the functionality of being able to select a
+ * order function, which consists of:
+ * Add - Adds an item(s) to an Order.
+ * Sub - Subtracts (deletes) an item(s) from an Order.
+ * Comp - Comps an item(s) for an order. This is where the item is basically given for free to the customer.
+ * Note - This adds a note/special instructions to an order, i.e. Mild/Medium/Hot
+ * Sub-Total - This calculates a current sub-total for an order.
+ * Cash Out - This tenders the total amount for the order, archives the order data (for reporting), and destroys
+ *            the Order object associated with a table so a new one can be made.
+ *
+ * Once a function is selected, a table can then be selected, opening up the appropriate GUI window for that function.
+ *
  */
 public class OrderMenu extends JFrame {
 

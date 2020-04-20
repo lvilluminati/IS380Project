@@ -6,8 +6,14 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 /**
- * @author Jason Jasper
- * This class initializes a menu that will add items/orders to a table specified.
+ * IS 380 Final Project - Restaurant Point of Sale program.
+ * @author Jason Jasper, David Martin-Vaquero, Jared Mclaren, Regine Villongco, Chemen Wong
+ * @version 0.1.0
+ *
+ * This is the ItemMenu class. This class initializes a menu that will add items/orders to a table specified.
+ * The user presses the plus or minus buttons to increment/decrement item quantities. Once done, the user clicks
+ * the ADD button, and the items are added to the current table (order).
+ *
  */
 public class ItemMenu extends JFrame {
     private int tableNumber;

@@ -2,14 +2,15 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-/*
- * Created by JFormDesigner on Sun Apr 19 20:16:43 PDT 2020
- */
-
-
-
 /**
- * @author Jason Jasper
+ * IS 380 Final Project - Restaurant Point of Sale program.
+ * @author Jason Jasper, David Martin-Vaquero, Jared Mclaren, Regine Villongco, Chemen Wong
+ * @version 0.1.0
+ *
+ * This is the OrderNote GUI component. This will add a text note (special instructions) to an existing order.
+ * This does not check to make sure there is an active order first, that is done by OrderMenu. It will throw
+ * an exception if a note is missing.
+ *
  */
 public class OrderNoteMenu extends JFrame {
 

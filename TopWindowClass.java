@@ -1,4 +1,6 @@
-//////THIS MIGHT NOT BE NECESSARY, NOT SURE YET!!!
+/**
+ * THIS CLASS IS NO LONGER NECESSARY AND SHOULD BE DELETED.
+ */
 
 public class TopWindowClass {
     public MainMenu mainWindow;
