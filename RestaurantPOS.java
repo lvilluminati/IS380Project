@@ -1,9 +1,14 @@
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
 import java.awt.*;
-import java.beans.JavaBean;
 
+/**
+ * IS 380 Final Project - Restaurant Point of Sale program.
+ * @author Jason Jasper, David Martin-Vaquero, Jared Mclaren, Regine Villongco, Chemen Wong
+ * @version 0.1.0
+ *
+ * This is the main class. It generates 9 Table objects in an array. It also gives application wide
+ * access to the Table method isAvailable(tableNum)
+ */
 public class RestaurantPOS {
 
     public static Table[] tableArray;

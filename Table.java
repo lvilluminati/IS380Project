@@ -1,3 +1,11 @@
+/**
+ * IS 380 Final Project - Restaurant Point of Sale program.
+ * @author Jason Jasper, David Martin-Vaquero, Jared Mclaren, Regine Villongco, Chemen Wong
+ * @version 0.1.0
+ *
+ * This is the Table class. This class controls orders for every table and provides functions for
+ * checking to see if a table is available and instantiating new instances of Order.
+ */
 public class Table {
     /*
     THIS CLASS WILL STORE TABLE DATA.

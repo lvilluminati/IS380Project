@@ -1,5 +1,13 @@
 import java.util.ArrayList;
 
+/**
+ * IS 380 Final Project - Restaurant Point of Sale program.
+ * @author Jason Jasper, David Martin-Vaquero, Jared Mclaren, Regine Villongco, Chemen Wong
+ * @version 0.1.0
+ *
+ * This is the Order class. It is the object abstraction that will hold all the different orders
+ * for tables. Table is the parent class since Order belongs to Table.
+ */
 public class Order extends Table {
     /*
     THIS CLASS WILL STORE ORDER DATA.
