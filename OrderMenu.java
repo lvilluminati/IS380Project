@@ -16,14 +16,21 @@ public class OrderMenu extends JFrame {
 
     public OrderMenu() {
         initComponents();
+        //Todo: Set table button color based on whether it has an order or not.
         //this.setVisible(true);
     }
     private void tableButtonActionPerformed(ActionEvent e) {
         String tableString = e.getActionCommand();
         int tableNum = Integer.parseInt(tableString);
-        System.out.println(tableNum);
+        System.out.println(functionSelected + " function on Table " + tableNum);
 
         if (this.functionSelected.equals("Add")) {
+            if (RestaurantPOS.isTableAvailable(tableNum)) {
+                System.out.println("Table " + tableNum+ " is available.");
+                //RestaurantPOS.tableArray[tableNum-1].startNewOrder(tableNum); I need to move this to ItemMenu
+            }
+            else { System.out.println("Table " + tableNum + " has an order"); }
+
             ItemMenu itemMenu = new ItemMenu(tableNum);
             itemMenu.setVisible(true);
         }
@@ -36,8 +43,22 @@ public class OrderMenu extends JFrame {
             compMenu.setVisible(true);
         }
         if (this.functionSelected.equals("Note")) {
+            if (RestaurantPOS.isTableAvailable(tableNum)) {
+                System.out.println("Table "+tableNum+" does NOT have an order to put a note on.");
+            }
+            else { System.out.println("Table " + tableNum + " opening note window");
             OrderNoteMenu noteMenu = new OrderNoteMenu(tableNum);
             noteMenu.setVisible(true);
+            }
+        }
+        if (this.functionSelected.equals("Close")) {
+            if (RestaurantPOS.isTableAvailable(tableNum)) {
+                System.out.println("Table "+tableNum+" does NOT have an order to close.");
+            }
+            else {
+                System.out.println("Table " + tableNum + " closing out order!");
+                RestaurantPOS.tableArray[tableNum - 1].disposeOrder();
+            }
         }
     }
     private void backButtonActionPerformed(ActionEvent e) {
@@ -56,6 +77,10 @@ public class OrderMenu extends JFrame {
         compButton.setBackground(null);
         noteButton.setForeground(null);
         noteButton.setBackground(null);
+        subTotalButton.setForeground(null);
+        subTotalButton.setBackground(null);
+        cashOutButton.setForeground(null);
+        cashOutButton.setBackground(null);
         this.functionSelected = "Add";
     }
 
@@ -69,6 +94,10 @@ public class OrderMenu extends JFrame {
         compButton.setBackground(null);
         noteButton.setForeground(null);
         noteButton.setBackground(null);
+        subTotalButton.setForeground(null);
+        subTotalButton.setBackground(null);
+        cashOutButton.setForeground(null);
+        cashOutButton.setBackground(null);
         this.functionSelected = "Sub";
     }
 
@@ -82,6 +111,10 @@ public class OrderMenu extends JFrame {
         compButton.setBackground(Color.red);
         noteButton.setForeground(null);
         noteButton.setBackground(null);
+        subTotalButton.setForeground(null);
+        subTotalButton.setBackground(null);
+        cashOutButton.setForeground(null);
+        cashOutButton.setBackground(null);
         this.functionSelected = "Comp";
     }
 
@@ -95,15 +128,45 @@ public class OrderMenu extends JFrame {
         compButton.setBackground(null);
         noteButton.setForeground(Color.white);
         noteButton.setBackground(Color.red);
+        subTotalButton.setForeground(null);
+        subTotalButton.setBackground(null);
+        cashOutButton.setForeground(null);
+        cashOutButton.setBackground(null);
         this.functionSelected = "Note";
     }
 
     private void subTotalButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
+        addbutton.setForeground(null);
+        addbutton.setBackground(null);
+        subButton.setForeground(null);
+        subButton.setBackground(null);
+        compButton.setForeground(null);
+        compButton.setBackground(null);
+        noteButton.setForeground(null);
+        noteButton.setBackground(null);
+        subTotalButton.setForeground(Color.white);
+        subTotalButton.setBackground(Color.red);
+        cashOutButton.setForeground(null);
+        cashOutButton.setBackground(null);
+        this.functionSelected = "Subtotal";
     }
 
     private void cashOutButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
+        addbutton.setForeground(null);
+        addbutton.setBackground(null);
+        subButton.setForeground(null);
+        subButton.setBackground(null);
+        compButton.setForeground(null);
+        compButton.setBackground(null);
+        noteButton.setForeground(null);
+        noteButton.setBackground(null);
+        subTotalButton.setForeground(null);
+        subTotalButton.setBackground(null);
+        cashOutButton.setForeground(Color.white);
+        cashOutButton.setBackground(Color.red);
+        this.functionSelected = "Close";
     }
 
     private void enableTableButtons() {
