@@ -11,6 +11,9 @@ import javax.swing.*;
  * @author Jason Jasper
  */
 public class OrderMenu extends JFrame {
+
+    private String functionSelected;
+
     public OrderMenu() {
         initComponents();
         //this.setVisible(true);
@@ -19,8 +22,23 @@ public class OrderMenu extends JFrame {
         String tableString = e.getActionCommand();
         int tableNum = Integer.parseInt(tableString);
         System.out.println(tableNum);
-        ItemMenu itemMenu = new ItemMenu(tableNum);
-        itemMenu.setVisible(true);
+
+        if (this.functionSelected.equals("Add")) {
+            ItemMenu itemMenu = new ItemMenu(tableNum);
+            itemMenu.setVisible(true);
+        }
+        if (this.functionSelected.equals("Sub")) {
+            RemoveItemMenu subMenu = new RemoveItemMenu(tableNum);
+            subMenu.setVisible(true);
+        }
+        if (this.functionSelected.equals("Comp")) {
+            CompItemMenu compMenu = new CompItemMenu(tableNum);
+            compMenu.setVisible(true);
+        }
+        if (this.functionSelected.equals("Note")) {
+            OrderNoteMenu noteMenu = new OrderNoteMenu(tableNum);
+            noteMenu.setVisible(true);
+        }
     }
     private void backButtonActionPerformed(ActionEvent e) {
         MainMenu haha = new MainMenu();
@@ -38,6 +56,7 @@ public class OrderMenu extends JFrame {
         compButton.setBackground(null);
         noteButton.setForeground(null);
         noteButton.setBackground(null);
+        this.functionSelected = "Add";
     }
 
     private void subButtonActionPerformed(ActionEvent e) {
@@ -50,6 +69,7 @@ public class OrderMenu extends JFrame {
         compButton.setBackground(null);
         noteButton.setForeground(null);
         noteButton.setBackground(null);
+        this.functionSelected = "Sub";
     }
 
     private void compButtonActionPerformed(ActionEvent e) {
@@ -62,7 +82,7 @@ public class OrderMenu extends JFrame {
         compButton.setBackground(Color.red);
         noteButton.setForeground(null);
         noteButton.setBackground(null);
-
+        this.functionSelected = "Comp";
     }
 
     private void noteButtonActionPerformed(ActionEvent e) {
@@ -75,6 +95,7 @@ public class OrderMenu extends JFrame {
         compButton.setBackground(null);
         noteButton.setForeground(Color.white);
         noteButton.setBackground(Color.red);
+        this.functionSelected = "Note";
     }
 
     private void subTotalButtonActionPerformed(ActionEvent e) {
