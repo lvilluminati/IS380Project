@@ -5,21 +5,15 @@ import javax.swing.border.TitledBorder;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
-/*
- * Created by JFormDesigner on Mon Apr 13 19:02:12 PDT 2020
- */
-
-
-
 /**
  * @author Jason Jasper
  * This class initializes a menu that will add items/orders to a table specified.
  */
 public class ItemMenu extends JFrame {
     private int tableNumber;
-    final private String menuItems[] = {"BLT", "Chicken Pot Pie", "10\" Pizza", "Pasta", "Soup of the Day", "Salad",
+    final private String[] menuItems = {"BLT", "Chicken Pot Pie", "10\" Pizza", "Pasta", "Soup of the Day", "Salad",
             "Burger and Fries", "Bacon and Eggs"};
-    final private String beverageItems[] = {"Water", "Soda", "Coffee", "Tea", "Milk", "Juice"};
+    final private String[] beverageItems = {"Water", "Soda", "Coffee", "Tea", "Milk", "Juice"};
 
     public ItemMenu(int tableNum) {
         tableNumber = tableNum;
@@ -122,7 +116,15 @@ public class ItemMenu extends JFrame {
     }
 
     private void addButtonActionPerformed(ActionEvent e) {
-        // TODO add your code here that adds items to Order
+        //Todo: Add code to check if ANYTHING has been added to the order. if not, then skip this..
+        if (true) {
+            if (RestaurantPOS.isTableAvailable(tableNumber)) {
+                System.out.println("Table " + tableNumber + " has no order. Starting new order...");
+                RestaurantPOS.tableArray[tableNumber - 1].startNewOrder(tableNumber);
+            } else {
+                System.out.println("Table " + tableNumber + " has an order, adding to order");
+            }
+        }
     }
 
     private void initComponents() {

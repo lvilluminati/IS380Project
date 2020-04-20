@@ -1,0 +1,7 @@
+public class Item extends Order{
+    /*
+    THIS CLASS WILL STORE ITEMS DATA.
+    THE HIERARCHY SHOULD BE TABLE HAS AN ORDER HAS ITEMS.
+    ONLY ONE ORDER PER TABLE.
+    */
+}
