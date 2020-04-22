@@ -16,18 +16,23 @@ public class MainMenu extends JFrame {
     public JFrame orderWindow;
     public MainMenu() {
         initComponents();
+        //Commenting this out to fix color coded button bug - Not working
         orderWindow = new OrderMenu();
         orderWindow.setVisible(false);
     }
 
     private void exitButtonActionPerformed(ActionEvent e) {
-        // TODO add your code here
         System.exit(0);
     }
 
     private void orderButtonActionPerformed(ActionEvent e) {
         orderWindow.setVisible(true);
         this.setVisible(false);
+        /*
+        OrderMenu orderWindow = new OrderMenu();
+        orderWindow.setVisible(true);
+        this.dispose();
+        */
     }
 
     public void hideMain() {

@@ -72,9 +72,17 @@ public class OrderMenu extends JFrame {
         }
     }
     private void backButtonActionPerformed(ActionEvent e) {
+        /*
         MainMenu haha = new MainMenu();
+
         haha.setVisible(true);
         this.setVisible(false);
+         */
+        //Using dispose to close window rather than hiding it, this should fix a bug that keeps
+        //the color coding on the buttons from working more than once.
+        MainMenu menu = new MainMenu();
+        menu.setVisible(true);
+        this.dispose();
     }
 
     private void addbuttonActionPerformed(ActionEvent e) {
