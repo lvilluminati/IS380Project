@@ -14,6 +14,7 @@ import javax.swing.border.*;
  */
 public class CompItemMenu extends JFrame {
     private int tableNumber;
+    // Todo: Add code that actually retrieves itemized list from the order class to display.
     private String[] temporaryItems = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
 
     public CompItemMenu(int tableNum) {
