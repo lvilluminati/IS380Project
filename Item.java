@@ -9,6 +9,11 @@
  * NOT YET IMPLEMENTED
  */
 
+    //Todo: Add class fields that store item names and prices.
+    //Todo: Add method that returns a list of item names.
+    //Todo: Add a method that returns a list of item prices.
+    //Todo: Add a method that returns a list of item names and prices.
+
 public class Item extends Order{
 
 }

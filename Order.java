@@ -32,11 +32,11 @@ public class Order extends Table {
         System.out.println("Order #" + thisOrderNumber + " For Table #" + tableNumber + " Created.");
         //Table.startNewOrder(tableNumber);
     }
-
+    //Todo: Finish this method that adds items to an order.
     public void addItemsToOrder(Item[] items) {
 
     }
-
+    //Todo: Finish this method that subtracts/deletes items from an order.
     public void subItemsFromOrder(Item[] items) {
 
     }
