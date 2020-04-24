@@ -9,6 +9,8 @@ import java.awt.*;
  * This is the main class. It generates 9 Table objects in an array. It also gives application wide
  * access to the Table method isAvailable(tableNum)
  */
+
+//Demonstrating GitHub
 public class RestaurantPOS {
 
     public static Table[] tableArray;
