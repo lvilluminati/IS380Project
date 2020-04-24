@@ -20,6 +20,16 @@ public class ItemMenu extends JFrame {
     final private String[] menuItems = {"BLT", "Chicken Pot Pie", "10\" Pizza", "Pasta", "Soup of the Day", "Salad",
             "Burger and Fries", "Bacon and Eggs"};
     final private String[] beverageItems = {"Water", "Soda", "Coffee", "Tea", "Milk", "Juice"};
+    final private String[] menuIncrement = {"mIncrement0", "mIncrement1", "mIncrement2", "mIncrement3", "mIncrement4",
+    "mIncrement5", "mIncrement6", "mIncrement7"};
+    final private String[] menuDecrement = {"mDecrement0", "mDecrement1", "mDecrement2", "mDecrement3", "mDecrement4",
+    "mDecrement5", "mDecrement6", "mDecrement7"};
+    final private String[] beverageIncrement = {"bIncrement0", "bIncrement1", "bIncrement2", "bIncrement3", "bIncrement4",
+    "bIncrement5"};
+	final private String[] beverageDecrement = {"bDecrement0", "bDecrement1", "bDecrement2", "bDecrement3", "bDecrement4",
+    "bDecrement5"};
+    private JTextPane menuItemQuantity[]= new JTextPane[8];
+    private JTextPane beverageItemQuantity[] = new JTextPane[6];
 
     public ItemMenu(int tableNum) {
         tableNumber = tableNum;
@@ -44,29 +54,33 @@ public class ItemMenu extends JFrame {
 
             //CREATE THE ITEM DECREMENT BUTTON, SET BUTTON FONT SIZE, AND BUTTON SIZE
             JButton decrementQuantity = new JButton("-");
+            decrementQuantity.setActionCommand(menuDecrement[i]);
+            decrementQuantity.addActionListener(new ButtonListener());
             decrementQuantity.setFont(new Font("Tahoma", Font.PLAIN, 18));
             decrementQuantity.setPreferredSize(new Dimension(50, 50));
 
             //CREATE THE TEXT BOX TO HOLD ITEM QUANTITY, AND SET THE PREFERRED SIZE OF TEXT BOX
-            JTextPane itemQuantity = new JTextPane();
-            itemQuantity.setPreferredSize(new Dimension(30, 30));
+            menuItemQuantity[i] = new JTextPane();
+            menuItemQuantity[i].setPreferredSize(new Dimension(30, 30));
 
             //SET THE ALIGN CENTER, FONT SIZE, AND INITIALIZE THE QUANTITY TO ZERO
-            StyledDocument doc = itemQuantity.getStyledDocument();
+            StyledDocument doc = menuItemQuantity[i].getStyledDocument();
             SimpleAttributeSet center = new SimpleAttributeSet();
             StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
             doc.setParagraphAttributes(0, doc.getLength(), center, false);
-            itemQuantity.setFont(new Font("Tahoma", Font.PLAIN, 18));
-            itemQuantity.setText("0");
+            menuItemQuantity[i].setFont(new Font("Tahoma", Font.PLAIN, 18));
+            menuItemQuantity[i].setText("0");
 
             //CREATE THE ITEM INCREMENT BUTTON, SET BUTTON FONT SIZE, AND BUTTON SIZEc
             JButton incrementQuantity = new JButton("+");
+            incrementQuantity.setActionCommand(menuIncrement[i]);
+            incrementQuantity.addActionListener(new ButtonListener());
             incrementQuantity.setPreferredSize(new Dimension(50, 50));
             incrementQuantity.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
             //ADD ALL THE ITEMS TO THE ITEM CONTAINER
             itemContainer.add(decrementQuantity);
-            itemContainer.add(itemQuantity);
+            itemContainer.add(menuItemQuantity[i]);
             itemContainer.add(incrementQuantity);
             mainContainer.add(itemContainer);
         }
@@ -87,35 +101,200 @@ public class ItemMenu extends JFrame {
 
             //CREATE THE ITEM DECREMENT BUTTON, SET BUTTON FONT SIZE, AND BUTTON SIZE
             JButton decrementQuantity = new JButton("-");
+            decrementQuantity.setActionCommand(beverageDecrement[i]);
+            decrementQuantity.addActionListener(new ButtonListener());
             decrementQuantity.setFont(new Font("Tahoma", Font.PLAIN, 18));
             decrementQuantity.setPreferredSize(new Dimension(50, 50));
 
             //CREATE THE TEXT BOX TO HOLD ITEM QUANTITY, AND SET THE PREFERRED SIZE OF TEXT BOX
-            JTextPane itemQuantity = new JTextPane();
-            itemQuantity.setPreferredSize(new Dimension(30, 30));
+            beverageItemQuantity[i] = new JTextPane();
+            beverageItemQuantity[i].setPreferredSize(new Dimension(30, 30));
 
             //SET THE ALIGN CENTER, FONT SIZE, AND INITIALIZE THE QUANTITY TO ZERO
-            StyledDocument doc = itemQuantity.getStyledDocument();
+            StyledDocument doc = beverageItemQuantity[i].getStyledDocument();
             SimpleAttributeSet center = new SimpleAttributeSet();
             StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
             doc.setParagraphAttributes(0, doc.getLength(), center, false);
-            itemQuantity.setFont(new Font("Tahoma", Font.PLAIN, 18));
-            itemQuantity.setText("0");
+            beverageItemQuantity[i].setFont(new Font("Tahoma", Font.PLAIN, 18));
+            beverageItemQuantity[i].setText("0");
 
             //CREATE THE ITEM INCREMENT BUTTON, SET BUTTON FONT SIZE, AND BUTTON SIZEc
             JButton incrementQuantity = new JButton("+");
+            incrementQuantity.setActionCommand(beverageIncrement[i]);
+            incrementQuantity.addActionListener(new ButtonListener());
             incrementQuantity.setPreferredSize(new Dimension(50, 50));
             incrementQuantity.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
             //ADD ALL THE ITEMS TO THE ITEM CONTAINER
             beverageContainer.add(decrementQuantity);
-            beverageContainer.add(itemQuantity);
+            beverageContainer.add(beverageItemQuantity[i]);
             beverageContainer.add(incrementQuantity);
             mainContainer.add(beverageContainer);
         }
         //ADD THE ITEM CONTAINERS TO THE MAIN CONTAINERS
         beveragePanel.add(mainContainer);
     }
+
+    private class ButtonListener implements ActionListener
+    {
+		public void actionPerformed(ActionEvent e)
+		{
+			if (e.getActionCommand().equals(menuIncrement[0]))
+			{
+				menuItemQuantity[0].setText(Integer.toString(Integer.parseInt(menuItemQuantity[0].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(menuIncrement[1]))
+			{
+				menuItemQuantity[1].setText(Integer.toString(Integer.parseInt(menuItemQuantity[1].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(menuIncrement[2]))
+			{
+				menuItemQuantity[2].setText(Integer.toString(Integer.parseInt(menuItemQuantity[2].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(menuIncrement[3]))
+			{
+				menuItemQuantity[3].setText(Integer.toString(Integer.parseInt(menuItemQuantity[3].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(menuIncrement[4]))
+			{
+				menuItemQuantity[4].setText(Integer.toString(Integer.parseInt(menuItemQuantity[4].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(menuIncrement[5]))
+			{
+				menuItemQuantity[5].setText(Integer.toString(Integer.parseInt(menuItemQuantity[5].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(menuIncrement[6]))
+			{
+				menuItemQuantity[6].setText(Integer.toString(Integer.parseInt(menuItemQuantity[6].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(menuIncrement[7]))
+			{
+				menuItemQuantity[7].setText(Integer.toString(Integer.parseInt(menuItemQuantity[7].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(menuDecrement[0]))
+			{
+				if (Integer.parseInt(menuItemQuantity[0].getText()) > 0)
+				{
+					menuItemQuantity[0].setText(Integer.toString(Integer.parseInt(menuItemQuantity[0].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(menuDecrement[1]))
+			{
+				if (Integer.parseInt(menuItemQuantity[1].getText()) > 0)
+				{
+					menuItemQuantity[1].setText(Integer.toString(Integer.parseInt(menuItemQuantity[1].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(menuDecrement[2]))
+			{
+				if (Integer.parseInt(menuItemQuantity[2].getText()) > 0)
+				{
+					menuItemQuantity[2].setText(Integer.toString(Integer.parseInt(menuItemQuantity[2].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(menuDecrement[3]))
+			{
+				if (Integer.parseInt(menuItemQuantity[3].getText()) > 0)
+				{
+					menuItemQuantity[3].setText(Integer.toString(Integer.parseInt(menuItemQuantity[3].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(menuDecrement[4]))
+			{
+				if (Integer.parseInt(menuItemQuantity[4].getText()) > 0)
+				{
+					menuItemQuantity[4].setText(Integer.toString(Integer.parseInt(menuItemQuantity[4].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(menuDecrement[5]))
+			{
+				if (Integer.parseInt(menuItemQuantity[5].getText()) > 0)
+				{
+					menuItemQuantity[5].setText(Integer.toString(Integer.parseInt(menuItemQuantity[5].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(menuDecrement[6]))
+			{
+				if (Integer.parseInt(menuItemQuantity[6].getText()) > 0)
+				{
+					menuItemQuantity[6].setText(Integer.toString(Integer.parseInt(menuItemQuantity[6].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(menuDecrement[7]))
+			{
+				if (Integer.parseInt(menuItemQuantity[7].getText()) > 0)
+				{
+					menuItemQuantity[7].setText(Integer.toString(Integer.parseInt(menuItemQuantity[7].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(beverageIncrement[0]))
+			{
+				beverageItemQuantity[0].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[0].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(beverageIncrement[1]))
+			{
+				beverageItemQuantity[1].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[1].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(beverageIncrement[2]))
+			{
+				beverageItemQuantity[2].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[2].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(beverageIncrement[3]))
+			{
+				beverageItemQuantity[3].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[3].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(beverageIncrement[4]))
+			{
+				beverageItemQuantity[4].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[4].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(beverageIncrement[5]))
+			{
+				beverageItemQuantity[5].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[5].getText()) + 1));
+			}
+			else if (e.getActionCommand().equals(beverageDecrement[0]))
+			{
+				if (Integer.parseInt(beverageItemQuantity[0].getText()) > 0)
+				{
+					beverageItemQuantity[0].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[0].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(beverageDecrement[1]))
+			{
+				if (Integer.parseInt(beverageItemQuantity[1].getText()) > 0)
+				{
+					beverageItemQuantity[1].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[1].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(beverageDecrement[2]))
+			{
+				if (Integer.parseInt(beverageItemQuantity[2].getText()) > 0)
+				{
+					beverageItemQuantity[2].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[2].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(beverageDecrement[3]))
+			{
+				if (Integer.parseInt(beverageItemQuantity[3].getText()) > 0)
+				{
+					beverageItemQuantity[3].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[3].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(beverageDecrement[4]))
+			{
+				if (Integer.parseInt(beverageItemQuantity[4].getText()) > 0)
+				{
+					beverageItemQuantity[4].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[4].getText()) - 1));
+				}
+			}
+			else if (e.getActionCommand().equals(beverageDecrement[5]))
+			{
+				if (Integer.parseInt(beverageItemQuantity[5].getText()) > 0)
+				{
+					beverageItemQuantity[5].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[5].getText()) - 1));
+				}
+			}
+		}
+	}
 
     private void cancelButtonActionPerformed(ActionEvent e) {
         this.dispose();
