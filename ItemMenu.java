@@ -43,6 +43,7 @@ public class ItemMenu extends JFrame {
                     new Font("Tahoma", Font.PLAIN, 14)));
 
             //CREATE THE ITEM DECREMENT BUTTON, SET BUTTON FONT SIZE, AND BUTTON SIZE
+            //Todo: Add code that decrements count in Text Pane but not negative numbers
             JButton decrementQuantity = new JButton("-");
             decrementQuantity.setFont(new Font("Tahoma", Font.PLAIN, 18));
             decrementQuantity.setPreferredSize(new Dimension(50, 50));
@@ -59,7 +60,8 @@ public class ItemMenu extends JFrame {
             itemQuantity.setFont(new Font("Tahoma", Font.PLAIN, 18));
             itemQuantity.setText("0");
 
-            //CREATE THE ITEM INCREMENT BUTTON, SET BUTTON FONT SIZE, AND BUTTON SIZEc
+            //CREATE THE ITEM INCREMENT BUTTON, SET BUTTON FONT SIZE, AND BUTTON SIZE
+            //Todo: Add code that increments the Text Pane
             JButton incrementQuantity = new JButton("+");
             incrementQuantity.setPreferredSize(new Dimension(50, 50));
             incrementQuantity.setFont(new Font("Tahoma", Font.PLAIN, 18));
