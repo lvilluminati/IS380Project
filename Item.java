@@ -15,5 +15,10 @@
     //Todo: Add a method that returns a list of item names and prices.
 
 public class Item extends Order{
+    
+
+    public void getItems (int tableNum) {
+        //return item list
+    }
 
 }
