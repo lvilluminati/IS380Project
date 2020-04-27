@@ -11,19 +11,30 @@ import javax.swing.border.*;
  * This is the RemoveItem GUI component. This will allow the user to select items from a list supplied by Order
  * which will be deleted from the order once the OK button is pressed.
  *
- * NOT YET IMPLEMENTED
  */
+// Todo: Add code that removes selected items from the order. The function should go in Order class.
 public class RemoveItemMenu extends JFrame {
     private int tableNumber;
     private String[] temporaryItems = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
+    private String[] itemArray;
 
     public RemoveItemMenu(int tableNum) {
         tableNumber = tableNum;
+        constructItemArray();
         initComponents();
         setTitle("Table "+tableNumber+" Select item(s) to remove.");
     }
 
+    private void constructItemArray() {
+        itemArray = RestaurantPOS.tableArray[tableNumber-1].getItemList();
+    }
+
     private void cancelButtonActionPerformed(ActionEvent e) {
+        this.dispose();
+    }
+
+    private void okButtonActionPerformed(ActionEvent e) {
+        //DELETE ITEMS CODE.
         this.dispose();
     }
 
@@ -33,7 +44,7 @@ public class RemoveItemMenu extends JFrame {
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         itemScrollPane1 = new JScrollPane();
-        itemList = new JList(temporaryItems);
+        itemList = new JList(itemArray);
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
@@ -44,14 +55,16 @@ public class RemoveItemMenu extends JFrame {
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
-        {
+        {   /*
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
+            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing
+            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+            ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
+            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
+            ) ) )throw new RuntimeException( ) ;} } );
+            */
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -80,6 +93,7 @@ public class RemoveItemMenu extends JFrame {
                 //---- okButton ----
                 okButton.setText("OK");
                 okButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+                okButton.addActionListener(e -> okButtonActionPerformed(e));
                 buttonBar.add(okButton, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 5), 0, 0));

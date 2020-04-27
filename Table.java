@@ -48,6 +48,25 @@ public class Table {
         hasOrder = status;
     }
 
+    protected void getSubtotal(int tableNumber) {
+        System.out.println(String.format("%.2f", thisOrder.getSubTotal()));
+    }
+
+    protected void addFoodItemsToOrder(int orderIndex, int quantity) {
+        for (int i=0; i<quantity; i++) {
+            thisOrder.addFoodItems(orderIndex);
+        }
+    }
+
+    protected void addBeverageItemsToOrder(int orderIndex, int quantity) {
+        for (int i=0; i<quantity; i++) {
+            thisOrder.addBeverageItems(orderIndex);
+        }
+    }
+
+    protected String[] getItemList() {
+        return thisOrder.getOrderItemList();
+    }
     public boolean isAvailable () {
         return !hasOrder;
     }

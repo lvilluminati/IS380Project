@@ -14,16 +14,26 @@ import javax.swing.border.*;
  */
 public class CompItemMenu extends JFrame {
     private int tableNumber;
-    // Todo: Add code that actually retrieves itemized list from the order class to display.
+    // Todo: Add code that removes selected items from the order. The function should go in Order class.
     private String[] temporaryItems = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
+    private String[] itemArray;
 
     public CompItemMenu(int tableNum) {
         tableNumber = tableNum;
+        constructItemArray();
         initComponents();
         setTitle("Table "+tableNumber+" Select item(s) to comp.");
     }
 
+    private void constructItemArray() {
+        itemArray = RestaurantPOS.tableArray[tableNumber-1].getItemList();
+    }
+
     private void cancelButtonActionPerformed(ActionEvent e) {
+        this.dispose();
+    }
+
+    private void okButtonActionPerformed() {
         this.dispose();
     }
 
@@ -33,7 +43,7 @@ public class CompItemMenu extends JFrame {
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         itemScrollPane1 = new JScrollPane();
-        itemList = new JList(temporaryItems);
+        itemList = new JList(itemArray);
         buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
@@ -44,15 +54,14 @@ public class CompItemMenu extends JFrame {
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
-        {
+        {   /*
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-            .swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing
-            .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
-            Font("Dialo\u0067",java.awt.Font.BOLD,12),java.awt.Color.red
-            ),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
-            public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".equals(e.getPropertyName(
-            )))throw new RuntimeException();}});
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+            0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+            .BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.
+            red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+            beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
+            */
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -81,6 +90,7 @@ public class CompItemMenu extends JFrame {
                 //---- okButton ----
                 okButton.setText("OK");
                 okButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+                okButton.addActionListener(e -> okButtonActionPerformed());
                 buttonBar.add(okButton, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 5), 0, 0));
