@@ -18,7 +18,7 @@ public class Order extends Table {
     static int orderNumbers;        //INCREMENT (COUNT) ORDER NUMBERS.
     private int thisOrderNumber;
     private int tableNumber;
-    private ArrayList<Item> itemList;
+    private ArrayList<Item> itemList = new ArrayList<Item>();
     private String orderNote = "";
 
     public Order() {
@@ -33,13 +33,25 @@ public class Order extends Table {
         //Table.startNewOrder(tableNumber);
     }
     //Todo: Finish this method that adds items to an order.
-    public void addItemsToOrder(Item[] items) {
-
+    public void addFoodItems(int itemIndex) {
+        itemList.add(new Item(itemIndex, "Food"));
+        Item thisguy = itemList.get(itemList.size()-1);
+        System.out.println(thisguy.getItemName());
     }
     //Todo: Finish this method that subtracts/deletes items from an order.
-    public void subItemsFromOrder(Item[] items) {
-
+    public void subFoodItems(int arrayListIndex) {
+        itemList.remove(arrayListIndex);
     }
+    public void addBeverageItems(int itemIndex) {
+        itemList.add(new Item(itemIndex, "Beverage"));
+        Item thisguy = itemList.get(itemList.size()-1);
+        System.out.println(thisguy.getItemName());
+    }
+    //Todo: Finish this method that subtracts/deletes items from an order.
+    public void subBeverageItems(int arrayListIndex) {
+        itemList.remove(arrayListIndex);
+    }
+
 
     public void setOrderNote (String note) {
         this.orderNote = note;
@@ -51,5 +63,35 @@ public class Order extends Table {
 
     public int getOrderNumber() {
         return thisOrderNumber;
+    }
+
+    public double getSubTotal() {
+        double subtotal = 0;
+        for (int i=0; i<itemList.size(); i++) {
+            Item tallyItem = itemList.get(i);
+            subtotal += tallyItem.getItemPrice();
+            //tallyItem = null; //Send unused object to garbage collection not necessary when falls out of loop
+        }
+        return subtotal;
+    }
+
+    public String[] getOrderItemList() {
+        String[] thisItemList = new String[itemList.size()];
+        for (int i=0; i<itemList.size(); i++) {
+            Item listItem = itemList.get(i);
+            if (!listItem.getComped()) {  //If the item isn't comped, add it to the list. This also adds very small blank lines to the list.
+                thisItemList[i] = listItem.getItemName();
+            }
+        }
+        return thisItemList;
+    }
+
+    public String[] getTotalOrderItemList() {
+        String[] thisItemList = new String[itemList.size()];
+        for (int i=0; i<itemList.size(); i++) {
+            Item listItem = itemList.get(i);
+
+        }
+        return thisItemList;
     }
 }

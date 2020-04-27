@@ -28,8 +28,8 @@ public class ItemMenu extends JFrame {
     "bIncrement5"};
 	final private String[] beverageDecrement = {"bDecrement0", "bDecrement1", "bDecrement2", "bDecrement3", "bDecrement4",
     "bDecrement5"};
-    private JTextPane menuItemQuantity[]= new JTextPane[8];
-    private JTextPane beverageItemQuantity[] = new JTextPane[6];
+    private JTextPane[] menuItemQuantity = new JTextPane[8];
+    private JTextPane[] beverageItemQuantity = new JTextPane[6];
 
     public ItemMenu(int tableNum) {
         tableNumber = tableNum;
@@ -141,6 +141,29 @@ public class ItemMenu extends JFrame {
     {
 		public void actionPerformed(ActionEvent e)
 		{
+		    for (int i=0; i<menuIncrement.length; i++) {
+                if (e.getActionCommand().equals(menuIncrement[i])) {
+                    menuItemQuantity[i].setText(Integer.toString(Integer.parseInt(menuItemQuantity[i].getText()) + 1));
+                }
+                else if (e.getActionCommand().equals(menuDecrement[i])) {
+                    if (Integer.parseInt(menuItemQuantity[i].getText()) > 0) {
+                        menuItemQuantity[i].setText(Integer.toString(Integer.parseInt(menuItemQuantity[i].getText()) - 1));
+                    }
+                }
+            }
+                for (int j=0; j<beverageIncrement.length; j++) {
+		        if (e.getActionCommand().equals(beverageIncrement[j])) {
+                    beverageItemQuantity[j].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[j].getText()) + 1));
+                }
+		        else if (e.getActionCommand().equals(beverageDecrement[j])) {
+                    if (Integer.parseInt(beverageItemQuantity[j].getText()) > 0)
+                    {
+                        beverageItemQuantity[j].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[j].getText()) - 1));
+                    }
+                }
+            }
+		    /*  THIS WAS THE BLOCK OF CODE THAT CHEMIN WROTE, WAS SHORTENED TO TWO FOR LOOPS ABOVE. JJ
+
 			if (e.getActionCommand().equals(menuIncrement[0]))
 			{
 				menuItemQuantity[0].setText(Integer.toString(Integer.parseInt(menuItemQuantity[0].getText()) + 1));
@@ -229,6 +252,8 @@ public class ItemMenu extends JFrame {
 					menuItemQuantity[7].setText(Integer.toString(Integer.parseInt(menuItemQuantity[7].getText()) - 1));
 				}
 			}
+
+
 			else if (e.getActionCommand().equals(beverageIncrement[0]))
 			{
 				beverageItemQuantity[0].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[0].getText()) + 1));
@@ -295,6 +320,8 @@ public class ItemMenu extends JFrame {
 					beverageItemQuantity[5].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[5].getText()) - 1));
 				}
 			}
+
+		     */
 		}
 	}
 
@@ -304,16 +331,68 @@ public class ItemMenu extends JFrame {
 
     private void addButtonActionPerformed(ActionEvent e) {
         //Todo: Add code to check if ANYTHING has been added to the order. if not, then skip this..
-        if (true) {
-            if (RestaurantPOS.isTableAvailable(tableNumber)) {
-                System.out.println("Table " + tableNumber + " has no order. Starting new order...");
-                RestaurantPOS.tableArray[tableNumber - 1].startNewOrder(tableNumber);
-            } else {
-                System.out.println("Table " + tableNumber + " has an order, adding to order");
+        if (RestaurantPOS.isTableAvailable(tableNumber)) {
+            System.out.println("Table " + tableNumber + " has no order. Starting new order...");
+            RestaurantPOS.tableArray[tableNumber - 1].startNewOrder(tableNumber);
+            int[] foodItemArray = tallyFoodItems();
+            int[] beverageItemArray = tallyBeverageItems();
+            for (int j=0; j<menuItems.length; j++) {
+                if (foodItemArray[j] > 0) {  //If this particular item is added
+                        RestaurantPOS.tableArray[tableNumber - 1].addFoodItemsToOrder(j, foodItemArray[j]); //For each Item, add a new item with that quantity
+                }
+            }
+            for (int i=0; i<beverageItems.length; i++) {
+                if (beverageItemArray[i] > 0) {  //If this particular item is added
+                        RestaurantPOS.tableArray[tableNumber - 1].addBeverageItemsToOrder(i, beverageItemArray[i]); //For each Item, add a new item with that quantity
+                }
+            }
+        } else {
+            System.out.println("Table " + tableNumber + " has an order, adding to order");
+            int[] foodItemArray = tallyFoodItems();
+            int[] beverageItemArray = tallyBeverageItems();
+            for (int j=0; j<menuItems.length; j++) {
+                if (foodItemArray[j] > 0) {  //If this particular item is added
+                        RestaurantPOS.tableArray[tableNumber - 1].addFoodItemsToOrder(j, foodItemArray[j]); //For each Item, add a new item with that quantity
+                }
+            }
+            for (int i=0; i<beverageItems.length; i++) {
+                if (beverageItemArray[i] > 0) {  //If this particular item is added
+                        RestaurantPOS.tableArray[tableNumber - 1].addBeverageItemsToOrder(i, beverageItemArray[i]); //For each Item, add a new item with that quantity
+                }
             }
         }
+
+        this.dispose(); //Close window after adding.
+    }
+    private int[] tallyFoodItems() {
+        int[] foodItemCount = new int[menuItems.length];
+        for (int i=0; i<menuItems.length; i++) {
+            try {
+                foodItemCount[i] = Integer.parseInt(menuItemQuantity[i].getText());
+
+            }
+            catch (Exception e) {
+                System.out.println("Dont type things in the item quantity boxes.");
+                menuItemQuantity[i].setText("0"); //Over ride whatever they typed in the box to 0;
+            }
+        }
+        return foodItemCount;
     }
 
+    private int[] tallyBeverageItems() {
+        int[] beverageItemCount = new int[beverageItems.length];
+        for (int i=0; i<beverageItems.length; i++) {
+            try {
+                beverageItemCount[i] = Integer.parseInt(beverageItemQuantity[i].getText());
+
+            }
+            catch (Exception e) {  //If unable to parse an integer, it means they typed into the box somehow.
+                System.out.println("Dont type things in the item quantity boxes!!");
+                beverageItemQuantity[i].setText("0"); //Over ride whatever they typed in the box to 0;
+            }
+        }
+        return beverageItemCount;
+    }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Jason Jasper
