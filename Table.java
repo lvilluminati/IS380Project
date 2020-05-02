@@ -52,11 +52,9 @@ public class Table {
         System.out.println(String.format("%.2f", thisOrder.getSubTotal()));
     }
 
-
     protected double getSubAmount(int tableNumber) {
         return thisOrder.getSubTotal();
     }
-
 
     protected void addFoodItemsToOrder(int orderIndex, int quantity) {
         for (int i=0; i<quantity; i++) {

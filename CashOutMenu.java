@@ -18,7 +18,8 @@ import javax.swing.text.StyledDocument;
 // Todo: Add something to show current tip percentage
 // Todo: Allow of input to tip textpane to update both tipDouble and Grand total
 // Todo: Cancel button should return to prior menu and leave order alone
-// Todo: Cashout button destroys order for table and shows amount of change needed
+// Todo: Cashout button *destroys order <-- Added by Jason for continuity* for table and shows amount of change needed
+// Todo: Maybe add an "Are you sure?" dialog to Delete Order?
 
 public class CashOutMenu extends JFrame {
     private JLabel subAmount = new JLabel();
@@ -156,9 +157,10 @@ public class CashOutMenu extends JFrame {
         }
     }
     private void cashOutButtonActionPerformed(ActionEvent e) {
-
+        RestaurantPOS.tableArray[orderNumber - 1].disposeOrder();
         this.dispose();
     }
+  
     private void deleteButtonActionPerformed(ActionEvent e) {
         RestaurantPOS.tableArray[orderNumber - 1].disposeOrder();
         this.dispose();
