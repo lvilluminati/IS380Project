@@ -61,13 +61,23 @@ public class OrderMenu extends JFrame {
             noteMenu.setVisible(true);
             }
         }
+        if (this.functionSelected.equals("Subtotal")) {
+            if (RestaurantPOS.isTableAvailable(tableNum)) {
+                System.out.println("Table "+tableNum+" does NOT have an order to subtotal.");
+            }
+            else {
+                System.out.println("Table " + tableNum + " getting subtotal!");
+                RestaurantPOS.tableArray[tableNum - 1].getSubtotal(tableNum);
+            }
+        }
         if (this.functionSelected.equals("Close")) {
             if (RestaurantPOS.isTableAvailable(tableNum)) {
                 System.out.println("Table "+tableNum+" does NOT have an order to close.");
             }
             else {
                 System.out.println("Table " + tableNum + " closing out order!");
-                RestaurantPOS.tableArray[tableNum - 1].disposeOrder();
+                CashOutMenu cashOutMenu = new CashOutMenu(tableNum);
+                cashOutMenu.setVisible(true);
             }
         }
     }
