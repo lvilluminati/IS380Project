@@ -76,7 +76,8 @@ public class OrderMenu extends JFrame {
             }
             else {
                 System.out.println("Table " + tableNum + " closing out order!");
-                RestaurantPOS.tableArray[tableNum - 1].disposeOrder();
+                CashOutMenu cashOutMenu = new CashOutMenu(tableNum);
+                cashOutMenu.setVisible(true);
             }
         }
     }
