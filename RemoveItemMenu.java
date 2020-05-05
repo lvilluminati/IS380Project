@@ -18,6 +18,10 @@ public class RemoveItemMenu extends JFrame {
     private String[] temporaryItems = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
     private String[] itemArray;
 
+    /**
+    Constructor for remove item menu.
+    @param A table number.
+    */
     public RemoveItemMenu(int tableNum) {
         tableNumber = tableNum;
         constructItemArray();
@@ -25,19 +29,33 @@ public class RemoveItemMenu extends JFrame {
         setTitle("Table "+tableNumber+" Select item(s) to remove.");
     }
 
+    /**
+	Method for creating an item array.
+    */
     private void constructItemArray() {
         itemArray = RestaurantPOS.tableArray[tableNumber-1].getItemList();
     }
 
+    /**
+	Method for cancel button's action.
+	@param ActionEvent object generated.
+    */
     private void cancelButtonActionPerformed(ActionEvent e) {
         this.dispose();
     }
 
+    /**
+	Method for ok button's action.
+	@param ActionEvent object generated.
+    */
     private void okButtonActionPerformed(ActionEvent e) {
         //DELETE ITEMS CODE.
         this.dispose();
     }
 
+    /**
+	Method for creating panels, buttons, and lists.
+    */
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Jason Jasper
@@ -81,6 +99,7 @@ public class RemoveItemMenu extends JFrame {
                 }
                 contentPanel.add(itemScrollPane1, BorderLayout.CENTER);
             }
+            // Add to content panel to dialog pane.
             dialogPane.add(contentPanel, BorderLayout.CENTER);
 
             //======== buttonBar ========
@@ -106,8 +125,10 @@ public class RemoveItemMenu extends JFrame {
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 0), 0, 0));
             }
+            // Add buttons to dialog pane.
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
         }
+        // Add to content pane.
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(400, 375);
         setLocationRelativeTo(getOwner());

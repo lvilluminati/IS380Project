@@ -6,6 +6,9 @@ public class TopWindowClass {
     public MainMenu mainWindow;
     //public OrderMenu orderWindow;
 
+    /**
+    Constructor for creating top window.
+    */
     public TopWindowClass() {
     mainWindow = new MainMenu();
     //orderWindow = new OrderMenu();

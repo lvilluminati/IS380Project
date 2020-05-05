@@ -31,6 +31,10 @@ public class ItemMenu extends JFrame {
     private JTextPane[] menuItemQuantity = new JTextPane[8];
     private JTextPane[] beverageItemQuantity = new JTextPane[6];
 
+    /**
+    Constructor for item menu.
+    @param A table number.
+    */
     public ItemMenu(int tableNum) {
         tableNumber = tableNum;
         initComponents();
@@ -41,6 +45,9 @@ public class ItemMenu extends JFrame {
         //Orders.getOrders(tableNumber);
     }
 
+    /**
+    Method for creating food item panels.
+    */
     private void createItemPanels() {
         JPanel mainContainer = new JPanel();
         for (int i=0; i<menuItems.length; i++) {  //FOR EACH MENU ITEM IN THE ARRAY
@@ -90,6 +97,9 @@ public class ItemMenu extends JFrame {
        foodPanel.add(mainContainer);
     }
 
+    /**
+    Method for creating beverage item panels.
+    */
     private void createBeveragePanels() {
         JPanel mainContainer = new JPanel();
         for (int i=0; i<beverageItems.length; i++) {  //FOR EACH MENU ITEM IN THE ARRAY
@@ -137,27 +147,36 @@ public class ItemMenu extends JFrame {
         beveragePanel.add(mainContainer);
     }
 
+    // Private inner class for button actions.
     private class ButtonListener implements ActionListener
     {
+		/**
+		Override actionPerformed method.
+		@param ActionEvent object generated.
+		*/
 		public void actionPerformed(ActionEvent e)
 		{
 		    for (int i=0; i<menuIncrement.length; i++) {
                 if (e.getActionCommand().equals(menuIncrement[i])) {
+                    // Action for incrementing food item.
                     menuItemQuantity[i].setText(Integer.toString(Integer.parseInt(menuItemQuantity[i].getText()) + 1));
                 }
                 else if (e.getActionCommand().equals(menuDecrement[i])) {
                     if (Integer.parseInt(menuItemQuantity[i].getText()) > 0) {
+                        // Action for decrementing food item.
                         menuItemQuantity[i].setText(Integer.toString(Integer.parseInt(menuItemQuantity[i].getText()) - 1));
                     }
                 }
             }
                 for (int j=0; j<beverageIncrement.length; j++) {
 		        if (e.getActionCommand().equals(beverageIncrement[j])) {
+                    // Action for incrementing beverage item.
                     beverageItemQuantity[j].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[j].getText()) + 1));
                 }
 		        else if (e.getActionCommand().equals(beverageDecrement[j])) {
                     if (Integer.parseInt(beverageItemQuantity[j].getText()) > 0)
                     {
+						// Action for decrementing beverage item.
                         beverageItemQuantity[j].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[j].getText()) - 1));
                     }
                 }
@@ -325,13 +344,22 @@ public class ItemMenu extends JFrame {
 		}
 	}
 
+    /**
+    Method for cancel button's action.
+    @param ActionEvent object generated.
+    */
     private void cancelButtonActionPerformed(ActionEvent e) {
         this.dispose();
     }
 
+    /**
+	Method for add button's action.
+	@param ActionEvent object generated.
+    */
     private void addButtonActionPerformed(ActionEvent e) {
         //Todo: Add code to check if ANYTHING has been added to the order. if not, then skip this..
         if (RestaurantPOS.isTableAvailable(tableNumber)) {
+            // Action to add order to an empty table.
             System.out.println("Table " + tableNumber + " has no order. Starting new order...");
             RestaurantPOS.tableArray[tableNumber - 1].startNewOrder(tableNumber);
             int[] foodItemArray = tallyFoodItems();
@@ -347,6 +375,7 @@ public class ItemMenu extends JFrame {
                 }
             }
         } else {
+            // Action to add order to a table that has a previous order.
             System.out.println("Table " + tableNumber + " has an order, adding to order");
             int[] foodItemArray = tallyFoodItems();
             int[] beverageItemArray = tallyBeverageItems();
@@ -364,14 +393,19 @@ public class ItemMenu extends JFrame {
 
         this.dispose(); //Close window after adding.
     }
+    /**
+	Method for keeping a count of food items.
+	*/
     private int[] tallyFoodItems() {
         int[] foodItemCount = new int[menuItems.length];
         for (int i=0; i<menuItems.length; i++) {
+			// Total all food item text boxes.
             try {
                 foodItemCount[i] = Integer.parseInt(menuItemQuantity[i].getText());
 
             }
             catch (Exception e) {
+				//  Catch invalid text boxes.
                 System.out.println("Dont type things in the item quantity boxes.");
                 menuItemQuantity[i].setText("0"); //Over ride whatever they typed in the box to 0;
             }
@@ -379,20 +413,28 @@ public class ItemMenu extends JFrame {
         return foodItemCount;
     }
 
+    /**
+	Method for keeping a count of beverage items.
+	*/
     private int[] tallyBeverageItems() {
         int[] beverageItemCount = new int[beverageItems.length];
         for (int i=0; i<beverageItems.length; i++) {
+            // Total all beverage item text boxes.
             try {
                 beverageItemCount[i] = Integer.parseInt(beverageItemQuantity[i].getText());
 
             }
             catch (Exception e) {  //If unable to parse an integer, it means they typed into the box somehow.
+                // Catch invalid text boxes.
                 System.out.println("Dont type things in the item quantity boxes!!");
                 beverageItemQuantity[i].setText("0"); //Over ride whatever they typed in the box to 0;
             }
         }
         return beverageItemCount;
     }
+    /**
+    Method for creating panes and buttons.
+    */
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Jason Jasper

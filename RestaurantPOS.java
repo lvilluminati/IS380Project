@@ -15,6 +15,7 @@ public class RestaurantPOS {
 
     public static Table[] tableArray;
 
+    // Main method for creating the restaurant point of sale GUI.
     public static void main(String[] args) {
     //TopWindowClass topClass = new TopWindowClass();
     //new TopWindowClass();
@@ -22,12 +23,14 @@ public class RestaurantPOS {
         tableArray = new Table[9];
 
         for (int i=0; i<9; i++) {
+            // Create table array elements.
             tableArray[i] = new Table(i+1);
         }
 
         //Table table0 = new Table(1);
         //System.out.println(table0.isAvailable());
 
+        // Create main window and set its look and feel.
         MainMenu mainWindow = new MainMenu();
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -38,6 +41,10 @@ public class RestaurantPOS {
         mainWindow.setVisible(true);
     }
 
+    /**
+    Method for checking if tables are in use.
+    @return Boolean value to determine table availability.
+    */
     public static boolean isTableAvailable(int tableNum) {
         return tableArray[tableNum-1].isAvailable();
     }
