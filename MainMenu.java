@@ -21,10 +21,18 @@ public class MainMenu extends JFrame {
         orderWindow.setVisible(false);
     }
 
+    /**
+    Method for exit button's action.
+    @param ActionEvent object generated.
+    */
     private void exitButtonActionPerformed(ActionEvent e) {
         System.exit(0);
     }
 
+    /**
+	Method for order button's action.
+	@param ActionEvent object generated.
+    */
     private void orderButtonActionPerformed(ActionEvent e) {
         orderWindow.setVisible(true);
         this.setVisible(false);
@@ -35,14 +43,23 @@ public class MainMenu extends JFrame {
         */
     }
 
+    /**
+    Method to hide main menu.
+    */
     public void hideMain() {
         this.setVisible(false);
     }
 
+    /**
+    Method to show main menu.
+    */
     public void showMain() {
         this.setVisible(true);
     }
 
+    /**
+    Method to create buttons.
+    */
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Jason Jasper

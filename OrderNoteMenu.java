@@ -15,6 +15,10 @@ import javax.swing.border.*;
 public class OrderNoteMenu extends JFrame {
 
     private int tableNumber;
+    /**
+    Constructor for order note menu.
+    @param A table number.
+    */
     public OrderNoteMenu(int tableNum) {
         tableNumber = tableNum;
         initComponents();
@@ -27,16 +31,27 @@ public class OrderNoteMenu extends JFrame {
         }
     }
 
+    /**
+	Method for cancel button's action.
+	@param ActionEvent object generated.
+    */
     private void cancelButtonActionPerformed(ActionEvent e) {
         this.dispose();
     }
 
+    /**
+	Method for ok button's action.
+	@param ActionEvent object generated.
+    */
     private void okButtonActionPerformed(ActionEvent e) {
         String orderNote = orderNoteArea.getText();
         RestaurantPOS.tableArray[tableNumber-1].setOrderNote(orderNote);
         this.dispose();
     }
 
+    /**
+	Method for creating panels, text areas, and buttons.
+    */
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Jason Jasper
@@ -80,8 +95,10 @@ public class OrderNoteMenu extends JFrame {
                     orderNoteArea.setWrapStyleWord(true);
                     scrollPane1.setViewportView(orderNoteArea);
                 }
+                // Add to content panel.
                 contentPanel.add(scrollPane1, BorderLayout.CENTER);
             }
+            // Add panel to dialog pane.
             dialogPane.add(contentPanel, BorderLayout.CENTER);
 
             //======== buttonBar ========
@@ -107,8 +124,10 @@ public class OrderNoteMenu extends JFrame {
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 0), 0, 0));
             }
+            // Add buttons to dialog pane.
             dialogPane.add(buttonBar, BorderLayout.SOUTH);
         }
+        // Add to content pane.
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(400, 375);
         setLocationRelativeTo(getOwner());

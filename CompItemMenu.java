@@ -18,6 +18,10 @@ public class CompItemMenu extends JFrame {
     private String[] temporaryItems = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
     private String[] itemArray;
 
+    /**
+    Constructor for creating comp item menu.
+    @param A table number.
+    */
     public CompItemMenu(int tableNum) {
         tableNumber = tableNum;
         constructItemArray();
@@ -25,18 +29,31 @@ public class CompItemMenu extends JFrame {
         setTitle("Table "+tableNumber+" Select item(s) to comp.");
     }
 
+    /**
+    Method for creating an item array.
+    */
     private void constructItemArray() {
         itemArray = RestaurantPOS.tableArray[tableNumber-1].getItemList();
     }
 
+    /**
+    Method for cancel button's action.
+    @param ActionEvent object generated.
+    */
     private void cancelButtonActionPerformed(ActionEvent e) {
         this.dispose();
     }
 
+    /**
+    Method for ok button's action.
+    */
     private void okButtonActionPerformed() {
         this.dispose();
     }
 
+    /**
+    Method for creating panes and buttons.
+    */
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Jason Jasper
