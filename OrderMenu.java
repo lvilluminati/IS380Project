@@ -103,12 +103,6 @@ public class OrderMenu extends JFrame {
     @param ActionEvent object generated.
     */
     private void backButtonActionPerformed(ActionEvent e) {
-        /*
-        MainMenu haha = new MainMenu();
-
-        haha.setVisible(true);
-        this.setVisible(false);
-         */
         //Using dispose to close window rather than hiding it, this should fix a bug that keeps
         //the color coding on the buttons from working more than once.
         MainMenu menu = new MainMenu();
@@ -122,8 +116,8 @@ public class OrderMenu extends JFrame {
     */
     private void addbuttonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
-        addbutton.setForeground(Color.white);
-        addbutton.setBackground(Color.red );
+        addButton.setForeground(Color.white);
+        addButton.setBackground(Color.red );
         subButton.setForeground(null);
         subButton.setBackground(null);
         compButton.setForeground(null);
@@ -143,8 +137,8 @@ public class OrderMenu extends JFrame {
     */
     private void subButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
-        addbutton.setForeground(null);
-        addbutton.setBackground(null);
+        addButton.setForeground(null);
+        addButton.setBackground(null);
         subButton.setForeground(Color.white);
         subButton.setBackground(Color.red);
         compButton.setForeground(null);
@@ -164,8 +158,8 @@ public class OrderMenu extends JFrame {
     */
     private void compButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
-        addbutton.setForeground(null);
-        addbutton.setBackground(null);
+        addButton.setForeground(null);
+        addButton.setBackground(null);
         subButton.setForeground(null);
         subButton.setBackground(null);
         compButton.setForeground(Color.white);
@@ -185,8 +179,8 @@ public class OrderMenu extends JFrame {
     */
     private void noteButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
-        addbutton.setForeground(null);
-        addbutton.setBackground(null);
+        addButton.setForeground(null);
+        addButton.setBackground(null);
         subButton.setForeground(null);
         subButton.setBackground(null);
         compButton.setForeground(null);
@@ -206,8 +200,8 @@ public class OrderMenu extends JFrame {
     */
     private void subTotalButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
-        addbutton.setForeground(null);
-        addbutton.setBackground(null);
+        addButton.setForeground(null);
+        addButton.setBackground(null);
         subButton.setForeground(null);
         subButton.setBackground(null);
         compButton.setForeground(null);
@@ -227,8 +221,8 @@ public class OrderMenu extends JFrame {
     */
     private void cashOutButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
-        addbutton.setForeground(null);
-        addbutton.setBackground(null);
+        addButton.setForeground(null);
+        addButton.setBackground(null);
         subButton.setForeground(null);
         subButton.setBackground(null);
         compButton.setForeground(null);
@@ -262,8 +256,6 @@ public class OrderMenu extends JFrame {
 	Method to create labels, panes, and buttons.
     */
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Jason Jasper
         label1 = new JLabel();
         tablePanel = new JPanel();
         table1 = new JButton();
@@ -279,7 +271,7 @@ public class OrderMenu extends JFrame {
         hSpacer2 = new JPanel(null);
         bottomPanel = new JPanel();
         operationsPanel = new JPanel();
-        addbutton = new JButton();
+        addButton = new JButton();
         subButton = new JButton();
         compButton = new JButton();
         noteButton = new JButton();
@@ -303,12 +295,6 @@ public class OrderMenu extends JFrame {
         {
             tablePanel.setPreferredSize(new Dimension(300, 200));
             tablePanel.setEnabled(false);
-            /*tablePanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
-            border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER
-            ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font
-            .BOLD,12),java.awt.Color.red),tablePanel. getBorder()));tablePanel. addPropertyChangeListener(
-            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072"
-            .equals(e.getPropertyName()))throw new RuntimeException();}});*/
             tablePanel.setLayout(new GridLayout(3, 3, 5, 5));
 
             //---- table1 ----
@@ -390,10 +376,10 @@ public class OrderMenu extends JFrame {
                 operationsPanel.setLayout(new GridLayout(2, 1, 10, 10));
 
                 //---- addbutton ----
-                addbutton.setText("Add");
-                addbutton.setFont(new Font("Tahoma", Font.PLAIN, 28));
-                addbutton.addActionListener(e -> addbuttonActionPerformed(e));
-                operationsPanel.add(addbutton);
+                addButton.setText("Add");
+                addButton.setFont(new Font("Tahoma", Font.PLAIN, 28));
+                addButton.addActionListener(e -> addbuttonActionPerformed(e));
+                operationsPanel.add(addButton);
 
                 //---- subButton ----
                 subButton.setText("Sub");
@@ -445,11 +431,8 @@ public class OrderMenu extends JFrame {
         contentPane.add(bottomPanel, BorderLayout.SOUTH);
         setSize(930, 580);
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Jason Jasper
     private JLabel label1;
     private JPanel tablePanel;
     private JButton table1;
@@ -465,7 +448,7 @@ public class OrderMenu extends JFrame {
     private JPanel hSpacer2;
     private JPanel bottomPanel;
     private JPanel operationsPanel;
-    private JButton addbutton;
+    private JButton addButton;
     private JButton subButton;
     private JButton compButton;
     private JButton noteButton;
@@ -473,5 +456,4 @@ public class OrderMenu extends JFrame {
     private JButton backButton;
     private JButton subTotalButton;
     private JButton cashOutButton;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

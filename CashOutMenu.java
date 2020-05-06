@@ -190,6 +190,9 @@ public class CashOutMenu extends JFrame {
     */
     private void cashOutButtonActionPerformed(ActionEvent e) {
         RestaurantPOS.tableArray[orderNumber - 1].disposeOrder();
+        Order.addSales(subDouble);
+        Order.addTax(taxDouble);
+        Order.addTips(tipDouble);
         this.dispose();
     }
 

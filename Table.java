@@ -112,6 +112,10 @@ public class Table {
         }
     }
 
+    protected void subFoodItemsFromOrder(int itemIndex) {
+        thisOrder.subFoodItems(itemIndex);
+    }
+
     /**
 	Method to get list of items.
 	@return Array of items in the order.
@@ -125,5 +129,9 @@ public class Table {
 	*/
     public boolean isAvailable () {
         return !hasOrder;
+    }
+
+    public void compFoodItemsFromOrder(int itemIndex) {
+        thisOrder.compFoodItems(itemIndex);
     }
 }
