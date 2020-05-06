@@ -24,11 +24,18 @@ public class OrderMenu extends JFrame {
 
     private String functionSelected;
 
+    /**
+    Constructor for order menu.
+    */
     public OrderMenu() {
         initComponents();
         //Todo: Set table button color based on whether it has an order or not.
         //this.setVisible(true);
     }
+    /**
+    Method for table button's action.
+    @param ActionEvent object generated.
+    */
     private void tableButtonActionPerformed(ActionEvent e) {
         String tableString = e.getActionCommand();
         int tableNum = Integer.parseInt(tableString);
@@ -36,41 +43,65 @@ public class OrderMenu extends JFrame {
 
         if (this.functionSelected.equals("Add")) {
             if (RestaurantPOS.isTableAvailable(tableNum)) {
+                // Action to add to empty table.
                 System.out.println("Table " + tableNum+ " is available.");
                 //RestaurantPOS.tableArray[tableNum-1].startNewOrder(tableNum); I need to move this to ItemMenu
             }
             else { System.out.println("Table " + tableNum + " has an order"); }
 
+            //  Create item menu.
             ItemMenu itemMenu = new ItemMenu(tableNum);
             itemMenu.setVisible(true);
         }
         if (this.functionSelected.equals("Sub")) {
+            // Action to create sub menu.
             RemoveItemMenu subMenu = new RemoveItemMenu(tableNum);
             subMenu.setVisible(true);
         }
         if (this.functionSelected.equals("Comp")) {
+            // Action to create comp menu.
             CompItemMenu compMenu = new CompItemMenu(tableNum);
             compMenu.setVisible(true);
         }
         if (this.functionSelected.equals("Note")) {
             if (RestaurantPOS.isTableAvailable(tableNum)) {
+                // Check if table is in use.
                 System.out.println("Table "+tableNum+" does NOT have an order to put a note on.");
             }
             else { System.out.println("Table " + tableNum + " opening note window");
+            // Create note menu.
             OrderNoteMenu noteMenu = new OrderNoteMenu(tableNum);
             noteMenu.setVisible(true);
             }
         }
+        if (this.functionSelected.equals("Subtotal")) {
+            if (RestaurantPOS.isTableAvailable(tableNum)) {
+                // Check if table is in use.
+                System.out.println("Table "+tableNum+" does NOT have an order to subtotal.");
+            }
+            else {
+                // Action to get subtotal
+                System.out.println("Table " + tableNum + " getting subtotal!");
+                RestaurantPOS.tableArray[tableNum - 1].getSubtotal(tableNum);
+            }
+        }
         if (this.functionSelected.equals("Close")) {
             if (RestaurantPOS.isTableAvailable(tableNum)) {
+                // Check if table is in use.
                 System.out.println("Table "+tableNum+" does NOT have an order to close.");
             }
             else {
+				// Create cash out menu.
                 System.out.println("Table " + tableNum + " closing out order!");
-                RestaurantPOS.tableArray[tableNum - 1].disposeOrder();
+                CashOutMenu cashOutMenu = new CashOutMenu(tableNum);
+                cashOutMenu.setVisible(true);
             }
         }
     }
+    /**
+    Method for back button's action.
+    @param ActionEvent object generated.
+    */
     private void backButtonActionPerformed(ActionEvent e) {
         /*
         MainMenu haha = new MainMenu();
@@ -85,6 +116,10 @@ public class OrderMenu extends JFrame {
         this.dispose();
     }
 
+    /**
+	Method for add button's action.
+	@param ActionEvent object generated.
+    */
     private void addbuttonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
         addbutton.setForeground(Color.white);
@@ -102,6 +137,10 @@ public class OrderMenu extends JFrame {
         this.functionSelected = "Add";
     }
 
+    /**
+	Method for sub button's action.
+	@param ActionEvent object generated.
+    */
     private void subButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
         addbutton.setForeground(null);
@@ -119,6 +158,10 @@ public class OrderMenu extends JFrame {
         this.functionSelected = "Sub";
     }
 
+    /**
+	Method for sub button's action.
+	@param ActionEvent object generated.
+    */
     private void compButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
         addbutton.setForeground(null);
@@ -136,6 +179,10 @@ public class OrderMenu extends JFrame {
         this.functionSelected = "Comp";
     }
 
+    /**
+	Method for note button's action.
+	@param ActionEvent object generated.
+    */
     private void noteButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
         addbutton.setForeground(null);
@@ -153,6 +200,10 @@ public class OrderMenu extends JFrame {
         this.functionSelected = "Note";
     }
 
+    /**
+	Method for subtotal button's action.
+	@param ActionEvent object generated.
+    */
     private void subTotalButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
         addbutton.setForeground(null);
@@ -170,6 +221,10 @@ public class OrderMenu extends JFrame {
         this.functionSelected = "Subtotal";
     }
 
+    /**
+	Method for cash out button's action.
+	@param ActionEvent object generated.
+    */
     private void cashOutButtonActionPerformed(ActionEvent e) {
         this.enableTableButtons();
         addbutton.setForeground(null);
@@ -187,6 +242,9 @@ public class OrderMenu extends JFrame {
         this.functionSelected = "Close";
     }
 
+    /**
+	Method to enable table buttons.
+    */
     private void enableTableButtons() {
         tablePanel.setEnabled(true);
         table1.setEnabled(true);
@@ -200,6 +258,9 @@ public class OrderMenu extends JFrame {
         table9.setEnabled(true);
     }
 
+    /**
+	Method to create labels, panes, and buttons.
+    */
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Jason Jasper
@@ -313,6 +374,7 @@ public class OrderMenu extends JFrame {
             table9.addActionListener(e -> tableButtonActionPerformed(e));
             tablePanel.add(table9);
         }
+        // Add to content pane.
         contentPane.add(tablePanel, BorderLayout.CENTER);
         contentPane.add(hSpacer1, BorderLayout.WEST);
         contentPane.add(hSpacer2, BorderLayout.EAST);
@@ -351,6 +413,7 @@ public class OrderMenu extends JFrame {
                 noteButton.addActionListener(e -> noteButtonActionPerformed(e));
                 operationsPanel.add(noteButton);
             }
+            // Add to bottom panel.
             bottomPanel.add(operationsPanel, BorderLayout.CENTER);
 
             //======== functionsPanel ========
@@ -378,6 +441,7 @@ public class OrderMenu extends JFrame {
             }
             bottomPanel.add(functionsPanel, BorderLayout.PAGE_END);
         }
+        // Add to bottom panel to content pane.
         contentPane.add(bottomPanel, BorderLayout.SOUTH);
         setSize(930, 580);
         setLocationRelativeTo(getOwner());
