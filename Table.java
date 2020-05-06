@@ -1,3 +1,8 @@
+// Jason Jasper
+// David Martin-Vaquero
+// Jared Mclaren
+// Regine Villongco
+// Chemen Wong
 /**
  * IS 380 Final Project - Restaurant Point of Sale program.
  * @author Jason Jasper, David Martin-Vaquero, Jared Mclaren, Regine Villongco, Chemen Wong
