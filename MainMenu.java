@@ -69,7 +69,7 @@ public class MainMenu extends JFrame {
 
         //======== this ========
         setTitle("Main Menu");
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new GridLayout(3, 1, 10, 10));
 
         //---- orderButton ----

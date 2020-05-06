@@ -69,7 +69,7 @@ public class RemoveItemMenu extends JFrame {
 
         //======== this ========
         setTitle("Select Item(s) To Remove");
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========

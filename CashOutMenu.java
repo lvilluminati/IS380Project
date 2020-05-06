@@ -223,7 +223,7 @@ public class CashOutMenu extends JFrame {
 
         //======== set dimensions ========
         setTitle("Cash Out");
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
         setSize(645, 465);
         setLocationRelativeTo(getOwner());

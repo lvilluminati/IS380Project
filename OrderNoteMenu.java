@@ -65,7 +65,7 @@ public class OrderNoteMenu extends JFrame {
 
         //======== this ========
         setTitle("Add Note to Order");
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========

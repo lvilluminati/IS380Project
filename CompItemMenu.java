@@ -67,7 +67,7 @@ public class CompItemMenu extends JFrame {
 
         //======== this ========
         setTitle("Select Item(s) To Comp");
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========

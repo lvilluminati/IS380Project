@@ -74,15 +74,16 @@ public class OrderMenu extends JFrame {
             noteMenu.setVisible(true);
             }
         }
-        if (this.functionSelected.equals("Subtotal")) {
-            if (RestaurantPOS.isTableAvailable(tableNum)) {
+        if (this.functionSelected.equals("Sub-Total")) {
+        	if (RestaurantPOS.isTableAvailable(tableNum)) {
                 // Check if table is in use.
                 System.out.println("Table "+tableNum+" does NOT have an order to subtotal.");
             }
             else {
                 // Action to get subtotal
                 System.out.println("Table " + tableNum + " getting subtotal!");
-                RestaurantPOS.tableArray[tableNum - 1].getSubtotal(tableNum);
+                SubTotalMenu subTotalMenu = new SubTotalMenu(tableNum);
+                subTotalMenu.setVisible(true);
             }
         }
         if (this.functionSelected.equals("Close")) {
@@ -218,7 +219,7 @@ public class OrderMenu extends JFrame {
         subTotalButton.setBackground(Color.red);
         cashOutButton.setForeground(null);
         cashOutButton.setBackground(null);
-        this.functionSelected = "Subtotal";
+        this.functionSelected = "Sub-Total";
     }
 
     /**
@@ -290,7 +291,7 @@ public class OrderMenu extends JFrame {
 
         //======== this ========
         setTitle("Orders");
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout(10, 10));
 
         //---- label1 ----

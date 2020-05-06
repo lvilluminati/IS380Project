@@ -452,7 +452,7 @@ public class ItemMenu extends JFrame {
 
         //======== this ========
         setTitle("Table");
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new GridLayout());
 
         //======== tabbedPane1 ========

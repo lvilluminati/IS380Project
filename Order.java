@@ -110,6 +110,7 @@ public class Order extends Table {
             Item tallyItem = itemList.get(i);
             subtotal += tallyItem.getItemPrice();
             //tallyItem = null; //Send unused object to garbage collection not necessary when falls out of loop
+            System.out.println("Subtotal: " + subtotal);
         }
         return subtotal;
     }
