@@ -1,3 +1,8 @@
+// Jason Jasper
+// David Martin-Vaquero
+// Jared Mclaren
+// Regine Villongco
+// Chemen Wong
 import java.util.ArrayList;
 
 /**
