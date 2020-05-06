@@ -41,8 +41,6 @@ public class ItemMenu extends JFrame {
         setTitle("Table "+tableNumber);
         createItemPanels();
         createBeveragePanels();
-
-        //Orders.getOrders(tableNumber);
     }
 
     /**
@@ -181,166 +179,6 @@ public class ItemMenu extends JFrame {
                     }
                 }
             }
-		    /*  THIS WAS THE BLOCK OF CODE THAT CHEMIN WROTE, WAS SHORTENED TO TWO FOR LOOPS ABOVE. JJ
-
-			if (e.getActionCommand().equals(menuIncrement[0]))
-			{
-				menuItemQuantity[0].setText(Integer.toString(Integer.parseInt(menuItemQuantity[0].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(menuIncrement[1]))
-			{
-				menuItemQuantity[1].setText(Integer.toString(Integer.parseInt(menuItemQuantity[1].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(menuIncrement[2]))
-			{
-				menuItemQuantity[2].setText(Integer.toString(Integer.parseInt(menuItemQuantity[2].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(menuIncrement[3]))
-			{
-				menuItemQuantity[3].setText(Integer.toString(Integer.parseInt(menuItemQuantity[3].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(menuIncrement[4]))
-			{
-				menuItemQuantity[4].setText(Integer.toString(Integer.parseInt(menuItemQuantity[4].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(menuIncrement[5]))
-			{
-				menuItemQuantity[5].setText(Integer.toString(Integer.parseInt(menuItemQuantity[5].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(menuIncrement[6]))
-			{
-				menuItemQuantity[6].setText(Integer.toString(Integer.parseInt(menuItemQuantity[6].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(menuIncrement[7]))
-			{
-				menuItemQuantity[7].setText(Integer.toString(Integer.parseInt(menuItemQuantity[7].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(menuDecrement[0]))
-			{
-				if (Integer.parseInt(menuItemQuantity[0].getText()) > 0)
-				{
-					menuItemQuantity[0].setText(Integer.toString(Integer.parseInt(menuItemQuantity[0].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(menuDecrement[1]))
-			{
-				if (Integer.parseInt(menuItemQuantity[1].getText()) > 0)
-				{
-					menuItemQuantity[1].setText(Integer.toString(Integer.parseInt(menuItemQuantity[1].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(menuDecrement[2]))
-			{
-				if (Integer.parseInt(menuItemQuantity[2].getText()) > 0)
-				{
-					menuItemQuantity[2].setText(Integer.toString(Integer.parseInt(menuItemQuantity[2].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(menuDecrement[3]))
-			{
-				if (Integer.parseInt(menuItemQuantity[3].getText()) > 0)
-				{
-					menuItemQuantity[3].setText(Integer.toString(Integer.parseInt(menuItemQuantity[3].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(menuDecrement[4]))
-			{
-				if (Integer.parseInt(menuItemQuantity[4].getText()) > 0)
-				{
-					menuItemQuantity[4].setText(Integer.toString(Integer.parseInt(menuItemQuantity[4].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(menuDecrement[5]))
-			{
-				if (Integer.parseInt(menuItemQuantity[5].getText()) > 0)
-				{
-					menuItemQuantity[5].setText(Integer.toString(Integer.parseInt(menuItemQuantity[5].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(menuDecrement[6]))
-			{
-				if (Integer.parseInt(menuItemQuantity[6].getText()) > 0)
-				{
-					menuItemQuantity[6].setText(Integer.toString(Integer.parseInt(menuItemQuantity[6].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(menuDecrement[7]))
-			{
-				if (Integer.parseInt(menuItemQuantity[7].getText()) > 0)
-				{
-					menuItemQuantity[7].setText(Integer.toString(Integer.parseInt(menuItemQuantity[7].getText()) - 1));
-				}
-			}
-
-
-			else if (e.getActionCommand().equals(beverageIncrement[0]))
-			{
-				beverageItemQuantity[0].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[0].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(beverageIncrement[1]))
-			{
-				beverageItemQuantity[1].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[1].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(beverageIncrement[2]))
-			{
-				beverageItemQuantity[2].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[2].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(beverageIncrement[3]))
-			{
-				beverageItemQuantity[3].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[3].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(beverageIncrement[4]))
-			{
-				beverageItemQuantity[4].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[4].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(beverageIncrement[5]))
-			{
-				beverageItemQuantity[5].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[5].getText()) + 1));
-			}
-			else if (e.getActionCommand().equals(beverageDecrement[0]))
-			{
-				if (Integer.parseInt(beverageItemQuantity[0].getText()) > 0)
-				{
-					beverageItemQuantity[0].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[0].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(beverageDecrement[1]))
-			{
-				if (Integer.parseInt(beverageItemQuantity[1].getText()) > 0)
-				{
-					beverageItemQuantity[1].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[1].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(beverageDecrement[2]))
-			{
-				if (Integer.parseInt(beverageItemQuantity[2].getText()) > 0)
-				{
-					beverageItemQuantity[2].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[2].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(beverageDecrement[3]))
-			{
-				if (Integer.parseInt(beverageItemQuantity[3].getText()) > 0)
-				{
-					beverageItemQuantity[3].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[3].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(beverageDecrement[4]))
-			{
-				if (Integer.parseInt(beverageItemQuantity[4].getText()) > 0)
-				{
-					beverageItemQuantity[4].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[4].getText()) - 1));
-				}
-			}
-			else if (e.getActionCommand().equals(beverageDecrement[5]))
-			{
-				if (Integer.parseInt(beverageItemQuantity[5].getText()) > 0)
-				{
-					beverageItemQuantity[5].setText(Integer.toString(Integer.parseInt(beverageItemQuantity[5].getText()) - 1));
-				}
-			}
-
-		     */
 		}
 	}
 
@@ -436,8 +274,6 @@ public class ItemMenu extends JFrame {
     Method for creating panes and buttons.
     */
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Jason Jasper
         tabbedPane1 = new JTabbedPane();
         foodPanel = new JPanel();
         itemPanel = new JPanel();
@@ -461,12 +297,6 @@ public class ItemMenu extends JFrame {
 
             //======== foodPanel ========
             {
-                /*foodPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
-                .EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER,javax
-                .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font.BOLD,
-                12),java.awt.Color.red),foodPanel. getBorder()));foodPanel. addPropertyChangeListener(new java.beans
-                .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".equals(e.
-                getPropertyName()))throw new RuntimeException();}});*/
                 foodPanel.setLayout(new BorderLayout());
 
                 //======== itemPanel ========
@@ -532,11 +362,8 @@ public class ItemMenu extends JFrame {
         contentPane.add(tabbedPane1);
         setSize(645, 465);
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Jason Jasper
     private JTabbedPane tabbedPane1;
     private JPanel foodPanel;
     private JPanel itemPanel;
@@ -548,5 +375,5 @@ public class ItemMenu extends JFrame {
     private JPanel beverageActionPanel;
     private JButton addButton2;
     private JButton cancelButton2;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
 }

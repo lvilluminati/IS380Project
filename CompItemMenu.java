@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -14,8 +15,6 @@ import javax.swing.border.*;
  */
 public class CompItemMenu extends JFrame {
     private int tableNumber;
-    // Todo: Add code that removes selected items from the order. The function should go in Order class.
-    private String[] temporaryItems = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
     private String[] itemArray;
 
     /**
@@ -48,6 +47,15 @@ public class CompItemMenu extends JFrame {
     Method for ok button's action.
     */
     private void okButtonActionPerformed() {
+        int[] itemArray = itemList.getSelectedIndices();
+        System.out.println("Comping item indices: " + Arrays.toString(itemArray));
+        int itemCount = 0;  //This is necessary to avoid out of bound indices.
+        for (int i=0; i<itemArray.length; i++) {  //Loop through each index in array and remove.
+            RestaurantPOS.tableArray[tableNumber-1].compFoodItemsFromOrder(itemArray[i]-itemCount);  //Remove item at readjusted index.
+            itemCount++;
+        }
+        JOptionPane.showMessageDialog(null,itemArray.length+" item(s) comped.",
+                "Items Comped", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }
 
@@ -55,8 +63,6 @@ public class CompItemMenu extends JFrame {
     Method for creating panes and buttons.
     */
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Jason Jasper
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         itemScrollPane1 = new JScrollPane();
@@ -71,14 +77,7 @@ public class CompItemMenu extends JFrame {
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
-        {   /*
-            dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-            0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-            .BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.
-            red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-            beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
-            */
+        {
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -125,11 +124,8 @@ public class CompItemMenu extends JFrame {
         contentPane.add(dialogPane, BorderLayout.CENTER);
         setSize(400, 375);
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Jason Jasper
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JScrollPane itemScrollPane1;
@@ -137,5 +133,4 @@ public class CompItemMenu extends JFrame {
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

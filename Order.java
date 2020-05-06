@@ -16,6 +16,9 @@ public class Order extends Table {
     */
 
     static int orderNumbers;        //INCREMENT (COUNT) ORDER NUMBERS.
+    static double totalSales;       //TRACK TOTAL SALES.
+    static double totalTax;         //TRACK TOTAL TAX.
+    static double totalTips;        //TRACK TOTAL TIPS.
     private int thisOrderNumber;
     private int tableNumber;
     private ArrayList<Item> itemList = new ArrayList<Item>();
@@ -39,7 +42,25 @@ public class Order extends Table {
         System.out.println("Order #" + thisOrderNumber + " For Table #" + tableNumber + " Created.");
         //Table.startNewOrder(tableNumber);
     }
-    //Todo: Finish this method that adds items to an order.
+    /**
+     Method to add to total sales tally. (Pre-tax, and tip)
+     @param double thisSale amount of sale.
+     */
+    public static void addSales(double thisSale) {
+        totalSales += thisSale;
+        System.out.println("Total sales so far: " + totalSales);
+    }
+
+    public static void addTax(double thisTax) {
+        totalTax += thisTax;
+        System.out.println("Total tax so far: " + totalTax);
+    }
+
+    public static void addTips(double thisTip) {
+        totalTips += thisTip;
+        System.out.println("Total tips so far: " + totalTips);
+    }
+
     /**
 	Method to add food items to array.
 	@param Item's index number.
@@ -55,7 +76,17 @@ public class Order extends Table {
     @param ArrayList index number.
     */
     public void subFoodItems(int arrayListIndex) {
+        System.out.println("Deleting item at index " + arrayListIndex);
         itemList.remove(arrayListIndex);
+    }
+    /**
+     Method to set an item as comped in the Item list.
+     @param ArrayList index number.
+     */
+    public void compFoodItems(int arrayListIndex) {
+        Item thisItem = itemList.get(arrayListIndex);
+        thisItem.setComped();
+        itemList.set(arrayListIndex, thisItem);
     }
     /**
 	Method to add beverage items to array.
@@ -143,4 +174,5 @@ public class Order extends Table {
         }
         return thisItemList;
     }
+
 }

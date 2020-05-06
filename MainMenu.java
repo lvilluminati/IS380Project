@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.text.DecimalFormat;
 import javax.swing.*;
 /**
  * IS 380 Final Project - Restaurant Point of Sale program.
@@ -14,6 +15,7 @@ import javax.swing.*;
  */
 public class MainMenu extends JFrame {
     public JFrame orderWindow;
+    public static DecimalFormat df2 = new DecimalFormat("#0.00");
     public MainMenu() {
         initComponents();
         //Commenting this out to fix color coded button bug - Not working
@@ -44,6 +46,17 @@ public class MainMenu extends JFrame {
     }
 
     /**
+     Method for report button's action. I wish we had more time to do something more with this, but we don't.
+     @param ActionEvent object generated.
+     */
+    private void reportButtonActionPerformed(ActionEvent e) {
+        double totalRevenue = Order.totalSales + Order.totalTax;
+        JOptionPane.showMessageDialog(null, "Total sales: $"+ df2.format(Order.totalSales)
+        + "\nTotal Tax: $"+ df2.format(Order.totalTax) +"\nTotal Revenue: $"+df2.format(totalRevenue)
+        + "\nTotal Tips: $"+  df2.format(Order.totalTips), "Sales Report", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    /**
     Method to hide main menu.
     */
     public void hideMain() {
@@ -61,8 +74,6 @@ public class MainMenu extends JFrame {
     Method to create buttons.
     */
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Jason Jasper
         orderButton = new JButton();
         reportButton = new JButton();
         exitButton = new JButton();
@@ -81,6 +92,7 @@ public class MainMenu extends JFrame {
         //---- reportButton ----
         reportButton.setText("Reports");
         reportButton.setFont(new Font("Arial Black", Font.BOLD, 26));
+        reportButton.addActionListener(e -> reportButtonActionPerformed(e));
         contentPane.add(reportButton);
 
         //---- exitButton ----
@@ -90,13 +102,10 @@ public class MainMenu extends JFrame {
         contentPane.add(exitButton);
         setSize(605, 435);
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Jason Jasper
     private JButton orderButton;
     private JButton reportButton;
     private JButton exitButton;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
 }

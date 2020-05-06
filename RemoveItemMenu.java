@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -15,7 +16,6 @@ import javax.swing.border.*;
 // Todo: Add code that removes selected items from the order. The function should go in Order class.
 public class RemoveItemMenu extends JFrame {
     private int tableNumber;
-    private String[] temporaryItems = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
     private String[] itemArray;
 
     /**
@@ -49,7 +49,15 @@ public class RemoveItemMenu extends JFrame {
 	@param ActionEvent object generated.
     */
     private void okButtonActionPerformed(ActionEvent e) {
-        //DELETE ITEMS CODE.
+        int[] itemArray = itemList.getSelectedIndices();
+        System.out.println("Deleting item indices: " + Arrays.toString(itemArray));
+        int itemCount = 0;  //This is necessary to avoid out of bound indices.
+        for (int i=0; i<itemArray.length; i++) {  //Loop through each index in array and remove.
+            RestaurantPOS.tableArray[tableNumber-1].subFoodItemsFromOrder(itemArray[i]-itemCount);  //Remove item at readjusted index.
+            itemCount++;
+        }
+        JOptionPane.showMessageDialog(null,itemArray.length+" item(s) removed.",
+                "Items Removed", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }
 
