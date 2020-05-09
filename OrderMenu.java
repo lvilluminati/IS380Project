@@ -50,7 +50,6 @@ public class OrderMenu extends JFrame {
             if (RestaurantPOS.isTableAvailable(tableNum)) {
                 // Action to add to empty table.
                 System.out.println("Table " + tableNum+ " is available.");
-                //RestaurantPOS.tableArray[tableNum-1].startNewOrder(tableNum); I need to move this to ItemMenu
             }
             else { System.out.println("Table " + tableNum + " has an order"); }
 
@@ -59,19 +58,31 @@ public class OrderMenu extends JFrame {
             itemMenu.setVisible(true);
         }
         if (this.functionSelected.equals("Sub")) {
+            if (RestaurantPOS.isTableAvailable(tableNum)) {
+                System.out.println("Table "+tableNum+" does NOT have an order to sub an item.");
+                displayNoOrderDialog(tableNum, "Sub");
+            }
             // Action to create sub menu.
-            RemoveItemMenu subMenu = new RemoveItemMenu(tableNum);
-            subMenu.setVisible(true);
+            else {
+                RemoveItemMenu subMenu = new RemoveItemMenu(tableNum);
+                subMenu.setVisible(true);
+            }
         }
         if (this.functionSelected.equals("Comp")) {
-            // Action to create comp menu.
-            CompItemMenu compMenu = new CompItemMenu(tableNum);
-            compMenu.setVisible(true);
+            if (RestaurantPOS.isTableAvailable(tableNum)) {
+                System.out.println("Table "+tableNum+" does NOT have an order to comp an item.");
+                displayNoOrderDialog(tableNum, "Comp");
+            }
+            else {
+                // Action to create comp menu.
+                CompItemMenu compMenu = new CompItemMenu(tableNum);
+                compMenu.setVisible(true);
+            }
         }
         if (this.functionSelected.equals("Note")) {
             if (RestaurantPOS.isTableAvailable(tableNum)) {
-                // Check if table is in use.
                 System.out.println("Table "+tableNum+" does NOT have an order to put a note on.");
+                displayNoOrderDialog(tableNum, "Note");
             }
             else { System.out.println("Table " + tableNum + " opening note window");
             // Create note menu.
@@ -83,17 +94,21 @@ public class OrderMenu extends JFrame {
             if (RestaurantPOS.isTableAvailable(tableNum)) {
                 // Check if table is in use.
                 System.out.println("Table "+tableNum+" does NOT have an order to subtotal.");
+                displayNoOrderDialog(tableNum, "Subtotal");
             }
             else {
                 // Action to get subtotal
                 System.out.println("Table " + tableNum + " getting subtotal!");
                 RestaurantPOS.tableArray[tableNum - 1].getSubtotal(tableNum);
+                SubTotalMenu subTotalMenu = new SubTotalMenu(tableNum);
+                subTotalMenu.setVisible(true);
             }
         }
         if (this.functionSelected.equals("Close")) {
             if (RestaurantPOS.isTableAvailable(tableNum)) {
                 // Check if table is in use.
                 System.out.println("Table "+tableNum+" does NOT have an order to close.");
+                displayNoOrderDialog(tableNum, "Cash Out");
             }
             else {
 				// Create cash out menu.
@@ -102,6 +117,14 @@ public class OrderMenu extends JFrame {
                 cashOutMenu.setVisible(true);
             }
         }
+    }
+    /**
+     Method to display warning dialog that an order does not exist to perform selected function on.
+     @param tableNum table number. function function name
+     */
+    private void displayNoOrderDialog(int tableNum, String function) {
+        JOptionPane.showMessageDialog(null, "Table "+tableNum+" Does NOT have" +
+                " an order to "+ function, "No Order", JOptionPane.WARNING_MESSAGE);
     }
     /**
     Method for back button's action.
