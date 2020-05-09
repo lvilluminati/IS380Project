@@ -88,6 +88,8 @@ public class OrderMenu extends JFrame {
                 // Action to get subtotal
                 System.out.println("Table " + tableNum + " getting subtotal!");
                 RestaurantPOS.tableArray[tableNum - 1].getSubtotal(tableNum);
+                SubTotalMenu subTotalMenu = new SubTotalMenu(tableNum);
+                subTotalMenu.setVisible(true);
             }
         }
         if (this.functionSelected.equals("Close")) {
