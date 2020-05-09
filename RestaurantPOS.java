@@ -31,7 +31,7 @@ public class RestaurantPOS {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         }
         catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ya done fucked up");
+            JOptionPane.showMessageDialog(null, "Error setting the Look and Feel!");
         }
         mainWindow.setVisible(true);
     }
