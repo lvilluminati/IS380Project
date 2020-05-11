@@ -30,7 +30,7 @@ public class Order extends Table {
     private String orderNote = "";
 
     /**
-    Constructor for order, no parameters passed.
+    Default Constructor for order, no parameters passed.
     */
     public Order() {
 
@@ -75,7 +75,7 @@ public class Order extends Table {
         Item thisguy = itemList.get(itemList.size()-1);
         System.out.println(thisguy.getItemName());
     }
-    //Todo: Finish this method that subtracts/deletes items from an order.
+
     /**
     Method to subtract food items from array.
     @param ArrayList index number.
@@ -102,7 +102,7 @@ public class Order extends Table {
         Item thisguy = itemList.get(itemList.size()-1);
         System.out.println(thisguy.getItemName());
     }
-    //Todo: Finish this method that subtracts/deletes items from an order.
+
     /**
 	Method to subtract beverage items from array.
     @param ArrayList index number.
@@ -145,7 +145,6 @@ public class Order extends Table {
             // Total item's prices.
             Item tallyItem = itemList.get(i);
             subtotal += tallyItem.getItemPrice();
-            //tallyItem = null; //Send unused object to garbage collection not necessary when falls out of loop
         }
         return subtotal;
     }

@@ -18,7 +18,7 @@ import javax.swing.border.*;
  * which will be deleted from the order once the OK button is pressed.
  *
  */
-// Todo: Add code that removes selected items from the order. The function should go in Order class.
+
 public class RemoveItemMenu extends JFrame {
     private int tableNumber;
     private String[] itemArray;
@@ -70,8 +70,6 @@ public class RemoveItemMenu extends JFrame {
 	Method for creating panels, buttons, and lists.
     */
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Jason Jasper
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         itemScrollPane1 = new JScrollPane();
@@ -86,16 +84,7 @@ public class RemoveItemMenu extends JFrame {
         contentPane.setLayout(new BorderLayout());
 
         //======== dialogPane ========
-        {   /*
-            dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing
-            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-            ) ,dialogPane. getBorder () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
-            ) ) )throw new RuntimeException( ) ;} } );
-            */
+        {
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -148,8 +137,6 @@ public class RemoveItemMenu extends JFrame {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Jason Jasper
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JScrollPane itemScrollPane1;
@@ -157,5 +144,4 @@ public class RemoveItemMenu extends JFrame {
     private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

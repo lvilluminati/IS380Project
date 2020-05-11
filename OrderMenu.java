@@ -34,8 +34,7 @@ public class OrderMenu extends JFrame {
     */
     public OrderMenu() {
         initComponents();
-        //Todo: Set table button color based on whether it has an order or not.
-        //this.setVisible(true);
+
     }
     /**
     Method for table button's action.

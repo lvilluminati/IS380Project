@@ -83,7 +83,6 @@ public class ItemMenu extends JFrame {
             menuItemQuantity[i].setText("0");
 
             //CREATE THE ITEM INCREMENT BUTTON, SET BUTTON FONT SIZE, AND BUTTON SIZE
-            //Todo: Add code that increments the Text Pane
             JButton incrementQuantity = new JButton("+");
             incrementQuantity.setActionCommand(menuIncrement[i]);
             incrementQuantity.addActionListener(new ButtonListener());
