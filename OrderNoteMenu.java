@@ -58,8 +58,6 @@ public class OrderNoteMenu extends JFrame {
 	Method for creating panels, text areas, and buttons.
     */
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Jason Jasper
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         scrollPane1 = new JScrollPane();

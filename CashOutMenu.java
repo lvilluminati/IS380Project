@@ -19,13 +19,6 @@ import javax.swing.text.StyledDocument;
  * CashOut menu will include tax breakdown, tip, cash handled and change amount
  */
 
-// Todo: Setup tips increment/decrement, 5% interval with [0-25%]
-// Todo: Add something to show current tip percentage
-// Todo: Allow of input to tip textpane to update both tipDouble and Grand total
-// Todo: Cancel button should return to prior menu and leave order alone
-// Todo: Cashout button *destroys order <-- Added by Jason for continuity* for table and shows amount of change needed
-// Todo: Maybe add an "Are you sure?" dialog to Delete Order?
-
 public class CashOutMenu extends JFrame {
     private JLabel subAmount = new JLabel();
     private JLabel taxAmount = new JLabel();
