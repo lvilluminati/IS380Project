@@ -30,7 +30,7 @@ public class RestaurantPOS {
         }
 
 
-        // Create main window and set its look and feel.
+        // Create main window and set its look and feel (Windows style).
         MainMenu mainWindow = new MainMenu();
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");

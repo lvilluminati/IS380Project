@@ -43,11 +43,6 @@ public class MainMenu extends JFrame {
     private void orderButtonActionPerformed(ActionEvent e) {
         orderWindow.setVisible(true);
         this.setVisible(false);
-        /*
-        OrderMenu orderWindow = new OrderMenu();
-        orderWindow.setVisible(true);
-        this.dispose();
-        */
     }
 
     /**

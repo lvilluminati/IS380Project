@@ -52,7 +52,7 @@ public class Table {
     protected void disposeOrder() {
         int orderNum = thisOrder.getOrderNumber();
         System.out.println("Order #" + orderNum + " Being destroyed.");
-        thisOrder = null;
+        thisOrder = null;  //Set order to NULL for garbage collection
         hasOrder = false;
     }
 
